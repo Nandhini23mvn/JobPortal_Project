@@ -1,37 +1,47 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
 
-const NavigationBar = () => {
+
+import React from 'react';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { navbar } from './assets/navbar'; // Adjust the path as needed
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faBuilding } from '@fortawesome/free-solid-svg-icons';
+
+const NavbarComponent = () => {
+  const config = navbar[0]; // Since your array has one item, we take the first one
+
   return (
-    <div className='container-xxl'>
-    <Navbar bg="white" expand="lg" className="border-b border ">
-      <Container  >
-        <Navbar.Brand href="#home" className="!text-customgreen">JobEntry</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home" className="!text-customgreen hover:text-green-700">HOME</Nav.Link>
-            <Nav.Link href="#about" className="text-green-500 hover:text-green-700">ABOUT</Nav.Link>
-            <NavDropdown title="JOBS" id="basic-nav-dropdown" className="text-green-500">
-              <NavDropdown.Item href="#job-list" className="text-green-500 hover:text-green-700">Job List</NavDropdown.Item>
-              <NavDropdown.Item href="#job-detail" className="text-green-500 hover:text-green-700">Job Detail</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="PAGES" id="basic-nav-dropdown" className="text-green-500">
-              <NavDropdown.Item href="#job-category" className="text-green-500 hover:text-green-700">Job Category</NavDropdown.Item>
-              <NavDropdown.Item href="#testimonial" className="text-green-500 hover:text-green-700">Testimonial</NavDropdown.Item>
-              <NavDropdown.Item href="#404" className="text-green-500 hover:text-green-700">404</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#contact" className="text-green-500 hover:text-green-700">CONTACT</Nav.Link>
-          </Nav>
-          <Button variant="outline-success" className="ms-2 text-green-500 border-green-500 hover:bg-green-500 hover:text-white">
-            Post a Job
-          </Button>
-        </Navbar.Collapse>
-      </Container>
+    <Navbar bg="dark" variant="dark" expand="lg" className="sticky-top shadow-sm">
+      <Navbar.Brand as={Link} to="/index" className="text-white">
+        <h1 className="m-0 text-2xl font-bold">
+          <FontAwesomeIcon icon={faBuilding} className="text-primary me-2" />
+          {config.brand}
+        </h1>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="navbarScroll" />
+      <Navbar.Collapse id="navbarScroll">
+        <Nav className="ms-auto py-0">
+          {config.links.map((link, index) => (
+            <Nav.Link key={index} as={Link} to={link.to} className="nav-item nav-link">
+              {link.label}
+            </Nav.Link>
+          ))}
+
+          <NavDropdown title={config.dropdown.title} id="navbarScrollingDropdown">
+            {config.dropdown.items.map((item, index) => (
+              <NavDropdown.Item key={index} as={Link} to={item.to}>
+                {item.label}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
+
+          <Nav.Link as={Link} to={config.button.link} className="bg-primary text-white px-5 ms-3 d-none d-lg-block">
+            {config.button.label} <i className="bi bi-arrow-right"></i>
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
-    </div>
-    
   );
 };
 
-export default NavigationBar;
+export default NavbarComponent;
