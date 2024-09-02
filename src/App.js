@@ -1,11 +1,17 @@
+import React from 'react';
 import './App.css';
-import Navbar from './Components/Navbar';
+// import Navbar from './Components/Navbar';
+import Index from './Components/Index';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-    </div>
+    <Router>
+      <div className="App">
+        {/* <Navbar /> */}
+        <Index/>
+      </div>
+    </Router>
   );
 }
 

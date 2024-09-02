@@ -2,14 +2,70 @@
     "user": [
         {
             "id": 1,
-            "title": "Learn React",
-            "completed": false
-        },
-        {
-            "id": 2,
-            "title": "Learn Redux",
-            "completed": true
+            "brand": "JobEntry",
+            "completed": false,
+            "link_1": [
+                {
+                    "to": "/index",
+                    "label": "HOME"
+                },
+                {
+                    "to": "/about",
+                    "label": "ABOUT"
+                }
+            ],
+            "dropdown_1": {
+                "title_1": "JOBS",
+                "items": [
+                  
+                    {
+                        "to": "list",
+                        "label": "Job List"
+                    },
+                    {
+                        "to": "detail",
+                        "label": "Job Detail"
+                    }
+                ]
+            },
+            "dropdown_2": {
+                "title_2": "PAGES",
+                "items": [
+                   
+                    {
+                        "to": "/category",
+                        "label": "Job Category"
+                    },
+                    {
+                        "to": "/testimonial",
+                        "label": "Testimonial"
+                    },
+                    {
+                        "to": "/404",
+                        "label": "404"
+                    }
+                ]
+            },
+            "link_2": [
+                {
+                    "to": "/contact",
+                    "label": "CONTACT"
+                }
+            ],
+            "button": {
+                "label": "Post A Job",
+                "link": ""
+            },
+            "sign_dropdown_button": [
+                {
+                    "to": "/login",
+                    "label": "Login"    
+                 },
+                 {
+                    "to": "/signup",
+                    "label": "Signup"    
+                 }
+            ]
         }
     ]
-  }
-  
+}

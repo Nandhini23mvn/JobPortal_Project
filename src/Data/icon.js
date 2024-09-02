@@ -41,7 +41,7 @@ import Com_logo_4 from './img/com-logo-4.jpg';
 import Com_logo_5 from './img/com-logo-5.jpg';
 import Testimonial_1 from './img/testimonial-1.jpg';
 import Testimonial_2 from './img/testimonial-2.jpg';
-import Testimonial_3 from './img/testimonial-.3.jpg';
+import Testimonial_3 from './img/testimonial-3.jpg';
 import Testimonial_4 from './img/testimonial-4.jpg';
 
 export const icons = {
@@ -76,68 +76,68 @@ export const icons = {
 
 export const images =[
 {
-    item_name: "About-1",
-    item_image: About_1
+    image_id: "About-1",
+    image_name: About_1
 },
 {
-    item_name: "About-2",
-    item_image: About_2
+    image_id: "About-2",
+    image_name: About_2
 },
 {
-    item_name: "About-3",
-    item_image: About_3
+    image_id: "About-3",
+    image_name: About_3
 },
 {
-    item_name: "About-4",
-    item_image: About_4
+    image_id: "About-4",
+    image_name: About_4
 },
 {
-    item_name: "Carousel-1",
-    item_image: Carousel_1
+    image_id: "Carousel-1",
+    image_name: Carousel_1
 },
 {
-    item_name: "Carousel-2",
-    item_image: Carousel_2
+    image_id: "Carousel-2",
+    image_name: Carousel_2
 },
 {
-    item_name: "Com_logo-1",
-    item_image: Com_logo_1
+    image_id: "Com_logo-1",
+    image_name: Com_logo_1
 },
 {
-    item_name: "Com_logo-2",
-    item_image: Com_logo_2
+    image_id: "Com_logo-2",
+    image_name: Com_logo_2
 },
 {
-    item_name: "Com_logo-3",
-    item_image: Com_logo_3
+    image_id: "Com_logo-3",
+    image_name: Com_logo_3
 },
 {
-    item_name: "Com_logo-3",
-    item_image: Com_logo_3
+    image_id: "Com_logo-3",
+    image_name: Com_logo_3
 },
 {
-    item_name: "Com_logo-4",
-    item_image: Com_logo_4
+    image_id: "Com_logo-4",
+    image_name: Com_logo_4
 },
 {
-    item_name: "Com_logo-5",
-    item_image: Com_logo_5
+    image_id: "Com_logo-5",
+    image_name: Com_logo_5
 },
 {
-    item_name: "Testimonial_1",
-    item_image: Testimonial_1
+    image_id: "Testimonial-1",
+    image_name: Testimonial_1
 },
 {
-    item_name: "Testimonial_2",
-    item_image: Testimonial_2
+    image_id: "Testimonial-2",
+    image_name: Testimonial_2
 },
 {
-    item_name: "Testimonial_3",
-    item_image: Testimonial_3
+    image_id: "Testimonial-3",
+    image_name: Testimonial_3
 },
 {
-    item_name: "Testimonial_4",
-    item_image: Testimonial_4
+    image_id: "Testimonial-4",
+    image_name: Testimonial_4
 }
 
 ]

@@ -1,10 +1,20 @@
-/* .navbar-brand
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+#navbarScrollingDropdown1 , #navbarScrollingDropdown2
 {
-    font-family: "Inter", sans-serif;
+  color: #2B3940 !important;
+
+  font-family: "Heebo", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 700;
-  font-size: 40px;
+  font-weight: 15px;
   font-style: normal;
+}
+#navbarScrollingDropdown1:hover,#navbarScrollingDropdown2:hover
+{
   color: #00B074 !important;
-  /* margin-bottom: 5px; 
-} */
+}
+a.nav-link.active 
+{
+  color: #00B074 !important; 
+}
