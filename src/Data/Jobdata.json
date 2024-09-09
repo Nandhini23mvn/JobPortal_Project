@@ -187,12 +187,13 @@
   "jobs": [
       {
           "title": "Find The Perfect Job That You Deserved",
-          "description": "Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.",
+          "description": "In fact, it's just a clita lorem. The very pain, but let it be the diam no. Kasd rebum himself and diam just clita and kasd rebum sea elitr",
+          
           "image": "img/carousel-1.jpg"
       },
       {
           "title": "Find The Best Startup Job That Fit You",
-          "description": "Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.",
+          "description": "In fact, it's just a clita lorem. The very pain, but let it be the diam no. Kasd rebum himself and diam just clita and kasd rebum sea elitr.",
           "image": "img/carousel-2.jpg"
       }
   ],
