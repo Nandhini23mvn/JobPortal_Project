@@ -1,96 +1,85 @@
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-import React, { useState } from 'react';
-import { Navbar, Nav, NavDropdown, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import jobData from '../Data/Jobdata.json'; 
+const SignIn = () => {
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-const NavbarComponent = () => {
-  const config = jobData.user[0]; 
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  if (!config) {
-    return null; 
-  }
+  const onSubmit = (data) => {
+    console.log(data);
+    // Handle form submission here, such as sending data to an API
+  };
 
   return (
-    <div className='container-xxl'>
-      <Navbar bg="white" variant="dark" expand="lg" className="sticky-top shadow mx-auto">
-        <Navbar.Brand as={Link} to="/index" className="text-white">
-          <h1 className="m-0 pl-10 !text-customgreen">
-            {config.brand || "Brand Name"}
-          </h1>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav className="ms-auto py-0">
-            {/* Mapping Link 1 */}
-            {config.link_1 && config.link_1.map((link, index) => (
-              <Nav.Link key={index} as={Link} to={link.to} className="nav-item nav-link !text-customgreen">
-                {link.label}
-              </Nav.Link>
-            ))}
+    <Container className="container-custom">
+      <Row className="form-container">
+        <Col md={6} className="mx-auto d-flex flex-column justify-content-center">
+          <h1 className="headertitle text-center">Login to Furni.</h1>
+          <p className="text-muted text-center">If you have an account, please login</p>
 
-            {/* Dropdown 1 - Jobs */}
-            {config.dropdown_1 && (
-              <NavDropdown title={config.dropdown_1.title_1} id="navbarScrollingDropdown1">
-                {config.dropdown_1.items && config.dropdown_1.items.map((item, index) => (
-                  <NavDropdown.Item key={index} as={Link} to={item.to} className="bg-customgreen">
-                    {item.label}
-                  </NavDropdown.Item>
-                ))}
-              </NavDropdown>
-            )}
+          <Form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Email Address"
+                {...register('email', { required: 'Email is required' })}
+                isInvalid={!!errors.email}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.email?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
 
-            {/* Dropdown 2 - Pages */}
-            {config.dropdown_2 && (
-              <NavDropdown title={config.dropdown_2.title_2} id="navbarScrollingDropdown2">
-                {config.dropdown_2.items && config.dropdown_2.items.map((item, index) => (
-                  <NavDropdown.Item key={index} as={Link} to={item.to}>
-                    {item.label}
-                  </NavDropdown.Item>
-                ))}
-              </NavDropdown>
-            )}
+            <Form.Group controlId="password" className="mt-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter Password"
+                {...register('password', { required: 'Password is required' })}
+                isInvalid={!!errors.password}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.password?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
 
-            {/* Mapping Link 2 */}
-            {config.link_2 && config.link_2.map((link, index) => (
-              <Nav.Link key={index} as={Link} to={link.to} className="nav-item nav-link !text-customgreen">
-                {link.label}
-              </Nav.Link>
-            ))}
+            <div className="forgot-password-link text-end mt-2">
+              <a href="#" className="text-muted">
+                Forgot Password?
+              </a>
+            </div>
 
-            {/* Button */}
-            {config.button && (
-              <Nav.Link as={Link} to={config.button.link} className="!bg-customgreen text-white py-4 px-5 ms-5 d-none d-lg-block">
-                {config.button.label} <i className="bi bi-arrow-right"></i>
-              </Nav.Link>
-            )}
-            <Dropdown
-          onMouseEnter={() => setShowDropdown(true)}
-          onMouseLeave={() => setShowDropdown(false)}
-          show={showDropdown}
-        >
-          <Dropdown.Toggle
-            variant="customorange"
-            className="text-white font-open-sans text-xl uppercase ms-3 !bg-customgreen rounded-0 py-4 d-none px-lg-5 d-lg-block"
-            style={{ height: '97px', fontSize: 'large' }}
-          >
-            {config.quoteButton?.label || "Post a Job"}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {config.sign_dropdown_button && config.sign_dropdown_button.map((btn, index) => (
-              <Dropdown.Item key={index} as={Link} to={btn.to}>
-                {btn.label}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+            <Button
+              type="submit"
+              className="submit-button w-100 mt-4"
+              variant="primary"
+            >
+              Log In
+            </Button>
+          </Form>
 
-    </div>
+          <div className="or-divider text-center my-4">
+            <hr />
+            <span>OR</span>
+            <hr />
+          </div>
+
+          <div className="sign-up-button text-center">
+            <p className="mb-0 text-muted">If you don't have an account...</p>
+            <Button
+              variant="link"
+              onClick={() => navigate('/Signup')}
+            >
+              Sign up
+            </Button>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default NavbarComponent;
+export default SignIn;
