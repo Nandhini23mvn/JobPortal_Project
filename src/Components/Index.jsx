@@ -237,7 +237,7 @@ const CarouselFadeExample = () => {
       </Container>
     </div>
   );
-};
+};   
 
 const MainComponent = () => {
   return (
