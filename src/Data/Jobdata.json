@@ -1,228 +1,266 @@
 {
-  "user": [
-      {
-          "id": 1,
-          "brand": "JobEntry",
-          "completed": false,
-          "link_1": [
-              {
-                  "to": "/index",
-                  "label": "HOME"
-              },
-              {
-                  "to": "/about",
-                  "label": "ABOUT"
-              }
-          ],
-          "dropdown_1": {
-              "title_1": "JOBS",
-              "items": [
-                  {
-                      "to": "list",
-                      "label": "Job List"
-                  },
-                  {
-                      "to": "detail",
-                      "label": "Job Detail"
-                  }
-              ]
-          },
-          "dropdown_2": {
-              "title_2": "PAGES",
-              "items": [
-                  {
-                      "to": "/category",
-                      "label": "Job Category"
-                  },
-                  {
-                      "to": "/testimonial",
-                      "label": "Testimonial"
-                  },
-                  {
-                      "to": "/404",
-                      "label": "404"
-                  }
-              ]
-          },
-          "link_2": [
-              {
-                  "to": "/contact",
-                  "label": "CONTACT"
-              }
-          ],
-          "button": {
-              "label": "Post A Job",
-              "link": ""
-          },
-          "sign_dropdown_button": [
-              {
-                  "to": "/login",
-                  "label": "Login"
-              },
-              {
-                  "to": "/signup",
-                  "label": "Signup"
-              }
-          ]
-      }
-  ],
-  "icons": {
-      "arrow_right": "FaArrowRight",
-      "up_arrow": "FaArrowUp",
-      "mail_bulk": "FaMailBulk",
-      "headset": "FaHeadset",
-      "user_tie": "FaUserTie",
-      "tasks": "FaTasks",
-      "chart_line": "FaChartLine",
-      "hands_help": "FaHandsHelping",
-      "book_reader": "FaBookReader",
-      "compass": "FaDraftingCompass",
-      "check": "FaCheck",
-      "map": "FaMapMarkerAlt",
-      "clock": "FaClock",
-      "money_bill": "FaMoneyBill",
-      "heart": "FaHeart",
-      "calendar": "FaCalendarAlt",
-      "quote_left": "FaQuoteLeft",
-      "angle_right": "FaAngleRight",
-      "phone": "FaPhoneAlt",
-      "email_envelope": "FaEnvelope",
-      "twitter": "FaTwitter",
-      "facebook": "FaFacebookF",
-      "youtube": "FaYoutube",
-      "linkedin": "FaLinkedinIn"
-  },
-  "images": [
-      {
-          "image_id": "About-1",
-          "image_name": "About_1"
-      },
-      {
-          "image_id": "About-2",
-          "image_name": "About_2"
-      },
-      {
-          "image_id": "About-3",
-          "image_name": "About_3"
-      },
-      {
-          "image_id": "About-4",
-          "image_name": "About_4"
-      },
-      {
-          "image_id": "Carousel-1",
-          "image_name": "Carousel_1"
-      },
-      {
-          "image_id": "Carousel-2",
-          "image_name": "Carousel_2"
-      },
-      {
-          "image_id": "Com_logo-1",
-          "image_name": "Com_logo_1"
-      },
-      {
-          "image_id": "Com_logo-2",
-          "image_name": "Com_logo_2"
-      },
-      {
-          "image_id": "Com_logo-3",
-          "image_name": "Com_logo_3"
-      },
-      {
-          "image_id": "Com_logo-4",
-          "image_name": "Com_logo_4"
-      },
-      {
-          "image_id": "Com_logo-5",
-          "image_name": "Com_logo_5"
-      },
-      {
-          "image_id": "Testimonial-1",
-          "image_name": "Testimonial_1"
-      },
-      {
-          "image_id": "Testimonial-2",
-          "image_name": "Testimonial_2"
-      },
-      {
-          "image_id": "Testimonial-3",
-          "image_name": "Testimonial_3"
-      },
-      {
-          "image_id": "Testimonial-4",
-          "image_name": "Testimonial_4"
-      }
-  ],
-  "carousel": {
-      "1": {
-          "image": "carousel_1",
-          "heading": "Find The Perfect Job That You Deserved",
-          "buttons": [
-              {
-                  "label": "Search A Job",
-                  "link": "/search-job"
-              },
-              {
-                  "label": "Find A Talent",
-                  "link": "/find-talent"
-              }
-          ]
-      },
-      "2": {
-          "image": "carousel_2",
-          "heading": "Find The Best Startup Job That Fit You",
-          "buttons": [
-              {
-                  "label": "Search A Job",
-                  "link": "/search-job"
-              },
-              {
-                  "label": "Find A Talent",
-                  "link": "/find-talent"
-              }
-          ]
-      }
-  },
-  "jobs": [
-      {
-          "title": "Find The Perfect Job That You Deserved",
-          "description": "In fact, it's just a clita lorem. The very pain, but let it be the diam no. Kasd rebum himself and diam just clita and kasd rebum sea elitr",
-          
-          "image": "img/carousel-1.jpg"
-      },
-      {
-          "title": "Find The Best Startup Job That Fit You",
-          "description": "In fact, it's just a clita lorem. The very pain, but let it be the diam no. Kasd rebum himself and diam just clita and kasd rebum sea elitr.",
-          "image": "img/carousel-2.jpg"
-      }
-  ],
-  "categories": [
-      {
-          "id": 1,
-          "name": "Category 1"
-      },
-      {
-          "id": 2,
-          "name": "Category 2"
-      },
-      {
-          "id": 3,
-          "name": "Category 3"
-      }
-  ],
-  "locations": [
-      {
-          "id": 1,
-          "name": "Location 1"
-      },
-      {
-          "id": 2,
-          "name": "Location 2"
-      },
-      {
-          "id": 3,
-          "name": "Location 3"
-      }
-  ]
+    "user": [
+        {
+            "id": 1,
+            "brand": "JobEntry",
+            "completed": false,
+            "link_1": [
+                {
+                    "to": "/index",
+                    "label": "HOME"
+                },
+                {
+                    "to": "/about",
+                    "label": "ABOUT"
+                }
+            ],
+            "dropdown_1": {
+                "title_1": "JOBS",
+                "items": [
+                    {
+                        "to": "list",
+                        "label": "Job List"
+                    },
+                    {
+                        "to": "detail",
+                        "label": "Job Detail"
+                    }
+                ]
+            },
+            "dropdown_2": {
+                "title_2": "PAGES",
+                "items": [
+                    {
+                        "to": "/category",
+                        "label": "Job Category"
+                    },
+                    {
+                        "to": "/testimonial",
+                        "label": "Testimonial"
+                    },
+                    {
+                        "to": "/404",
+                        "label": "404"
+                    }
+                ]
+            },
+            "link_2": [
+                {
+                    "to": "/contact",
+                    "label": "CONTACT"
+                }
+            ],
+            "button": {
+                "label": "Post A Job",
+                "link": "/post-a-job"
+            },
+            "sign_dropdown_button": [
+                {
+                    "path": "/signin",
+                    "label": "Sign In"
+                },
+                {
+                    "path": "/signup",
+                    "label": "Sign Up"
+                }
+            ],
+            "forms": {
+                "signin": {
+                    "title": "Sign In",
+                    "fields": [
+                        {
+                            "id": "email",
+                            "type": "email",
+                            "label": "Email Address"
+                        },
+                        {
+                            "id": "password",
+                            "type": "password",
+                            "label": "Password"
+                        }
+                    ],
+                    "submitText": "Sign In"
+                },
+                "signup": {
+                    "title": "Sign Up",
+                    "fields": [
+                        {
+                            "id": "email",
+                            "type": "email",
+                            "label": "Email Address"
+                        },
+                        {
+                            "id": "password",
+                            "type": "password",
+                            "label": "Password"
+                        },
+                        {
+                            "id": "confirmPassword",
+                            "type": "password",
+                            "label": "Confirm Password"
+                        }
+                    ],
+                    "submitText": "Sign Up"
+                }
+            }
+        }
+    ],
+    "icons": {
+        "arrow_right": "FaArrowRight",
+        "up_arrow": "FaArrowUp",
+        "mail_bulk": "FaMailBulk",
+        "headset": "FaHeadset",
+        "user_tie": "FaUserTie",
+        "tasks": "FaTasks",
+        "chart_line": "FaChartLine",
+        "hands_help": "FaHandsHelping",
+        "book_reader": "FaBookReader",
+        "compass": "FaDraftingCompass",
+        "check": "FaCheck",
+        "map": "FaMapMarkerAlt",
+        "clock": "FaClock",
+        "money_bill": "FaMoneyBill",
+        "heart": "FaHeart",
+        "calendar": "FaCalendarAlt",
+        "quote_left": "FaQuoteLeft",
+        "angle_right": "FaAngleRight",
+        "phone": "FaPhoneAlt",
+        "email_envelope": "FaEnvelope",
+        "twitter": "FaTwitter",
+        "facebook": "FaFacebookF",
+        "youtube": "FaYoutube",
+        "linkedin": "FaLinkedinIn"
+    },
+    "images": [
+        {
+            "image_id": "About-1",
+            "image_name": "About_1"
+        },
+        {
+            "image_id": "About-2",
+            "image_name": "About_2"
+        },
+        {
+            "image_id": "About-3",
+            "image_name": "About_3"
+        },
+        {
+            "image_id": "About-4",
+            "image_name": "About_4"
+        },
+        {
+            "image_id": "Carousel-1",
+            "image_name": "Carousel_1"
+        },
+        {
+            "image_id": "Carousel-2",
+            "image_name": "Carousel_2"
+        },
+        {
+            "image_id": "Com_logo-1",
+            "image_name": "Com_logo_1"
+        },
+        {
+            "image_id": "Com_logo-2",
+            "image_name": "Com_logo_2"
+        },
+        {
+            "image_id": "Com_logo-3",
+            "image_name": "Com_logo_3"
+        },
+        {
+            "image_id": "Com_logo-4",
+            "image_name": "Com_logo_4"
+        },
+        {
+            "image_id": "Com_logo-5",
+            "image_name": "Com_logo_5"
+        },
+        {
+            "image_id": "Testimonial-1",
+            "image_name": "Testimonial_1"
+        },
+        {
+            "image_id": "Testimonial-2",
+            "image_name": "Testimonial_2"
+        },
+        {
+            "image_id": "Testimonial-3",
+            "image_name": "Testimonial_3"
+        },
+        {
+            "image_id": "Testimonial-4",
+            "image_name": "Testimonial_4"
+        }
+    ],
+    "carousel": {
+        "1": {
+            "image": "carousel_1",
+            "heading": "Find The Perfect Job That You Deserved",
+            "buttons": [
+                {
+                    "label": "Search A Job",
+                    "link": "/search-job"
+                },
+                {
+                    "label": "Find A Talent",
+                    "link": "/find-talent"
+                }
+            ]
+        },
+        "2": {
+            "image": "carousel_2",
+            "heading": "Find The Best Startup Job That Fit You",
+            "buttons": [
+                {
+                    "label": "Search A Job",
+                    "link": "/search-job"
+                },
+                {
+                    "label": "Find A Talent",
+                    "link": "/find-talent"
+                }
+            ]
+        }
+    },
+    "jobs": [
+        {
+            "title": "Find The Perfect Job That You Deserved",
+            "description": "In fact, it's just a clita lorem. The very pain, but let it be the diam no. Kasd rebum himself and diam just clita and kasd rebum sea elitr.",
+            "image": "img/carousel-1.jpg"
+        },
+        {
+            "title": "Find The Best Startup Job That Fit You",
+            "description": "In fact, it's just a clita lorem. The very pain, but let it be the diam no. Kasd rebum himself and diam just clita and kasd rebum sea elitr.",
+            "image": "img/carousel-2.jpg"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Category 1"
+        },
+        {
+            "id": 2,
+            "name": "Category 2"
+        },
+        {
+            "id": 3,
+            "name": "Category 3"
+        }
+    ],
+    "locations": [
+        {
+            "id": 1,
+            "name": "Location 1"
+        },
+        {
+            "id": 2,
+            "name": "Location 2"
+        },
+        {
+            "id": 3,
+            "name": "Location 3"
+        }
+    ]
 }

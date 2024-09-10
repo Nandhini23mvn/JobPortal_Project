@@ -13,11 +13,11 @@ module.exports = {
       },
       fontSize: {
         '40xl': '40px',
-        '15xl': '14px'
+        '10xl': '10px'
       },
       fontWeight: {
         bold: 700,
-        normal:400
+        normal:500
       },
     },
   },

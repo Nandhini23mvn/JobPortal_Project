@@ -4,10 +4,9 @@
 #navbarScrollingDropdown1 , #navbarScrollingDropdown2
 {
   color: #2B3940 !important;
-
   font-family: "Heebo", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 15px;
+  /* font-weight: 12px; */
   font-style: normal;
 }
 #navbarScrollingDropdown1:hover,#navbarScrollingDropdown2:hover
@@ -18,3 +17,50 @@ a.nav-link.active
 {
   color: #00B074 !important; 
 }
+
+/* .navbar-nav .dropdown-toggle::after {
+  display: none;
+} */
+
+
+.custom-dropdown-toggle::after {
+  display: none !important; /* Hides the default arrow icon */
+}
+.custom-dropdown-toggle {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.container-background {
+  background-color: #f0f2f5; /* Light background color */
+}
+
+.card-custom {
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid #ddd; /* Light border color */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.card-title-custom {
+  color: #007bff; /* Primary color */
+}
+
+.form-control-custom {
+  border-color: #007bff; /* Primary color border */
+}
+
+.button-custom {
+  background-color: #007bff;
+  border-color: #007bff; /* Primary color button */
+}
+
+.link-custom {
+  color: #007bff; /* Primary color link */
+}
+
+
+ /* #navbarScroll
+ {
+  padding-right: 82px;
+  
+ } */
