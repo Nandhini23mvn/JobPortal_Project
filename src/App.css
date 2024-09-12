@@ -1,66 +1,114 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-#navbarScrollingDropdown1 , #navbarScrollingDropdown2
-{
-  color: #2B3940 !important;
-  font-family: "Heebo", sans-serif;
-  font-optical-sizing: auto;
-  /* font-weight: 12px; */
-  font-style: normal;
-}
-#navbarScrollingDropdown1:hover,#navbarScrollingDropdown2:hover
+
+#navbarScrollingDropdown1:hover,#navbarScrollingDropdown2:hover,a.nav-link.active 
 {
   color: #00B074 !important;
 }
-a.nav-link.active 
-{
-  color: #00B074 !important; 
+
+.navbar-custom {
+  height: 73px !important; /* Adjust the height as needed */
 }
 
-/* .navbar-nav .dropdown-toggle::after {
-  display: none;
+:root {
+  --dark: #2B3940;
+}
+#navbarScrollingDropdown1 , #navbarScrollingDropdown2
+{
+  color: var(--dark);
+  font-family: "Heebo", sans-serif;
+ 
+  font-size: 15px !important;
+  font-style: bold !important;
+}
+/* .navbar-light .navbar-brand, .navbar-light a.btn {
+  height: 75px;
 } */
+.container-xxl { width: 85% !important; } /* Default width */
+@media (max-width: 1440px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 1200px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 992px) { .container-xxl { width: 100% !important;  } }
+@media (max-width: 768px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 576px) { .container-xxl { width: 100% !important; } }
 
+/* Ensure content is centered vertically */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* For mobile view (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar-custom {
+    height: 80px; /* Adjust the height for mobile view as needed */
+  }
+}
 
 .custom-dropdown-toggle::after {
   display: none !important; /* Hides the default arrow icon */
 }
-.custom-dropdown-toggle {
+/* .custom-dropdown-toggle {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 .container-background {
-  background-color: #f0f2f5; /* Light background color */
+  background-color: #f0f2f5; /* Light background color 
 }
 
 .card-custom {
   max-width: 400px;
   border-radius: 8px;
   border: 1px solid #ddd; /* Light border color */
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+ /* box-shadow: 0 0 10px rgba(0,0,0,0.1); 
 }
 
 .card-title-custom {
-  color: #007bff; /* Primary color */
+  color: #007bff; /*
 }
 
 .form-control-custom {
-  border-color: #007bff; /* Primary color border */
+  border-color: #007bff; /* Primary color border 
 }
 
 .button-custom {
   background-color: #007bff;
-  border-color: #007bff; /* Primary color button */
+  border-color: #007bff; /* Primary color button 
 }
 
 .link-custom {
-  color: #007bff; /* Primary color link */
+  color: #007bff; /* Primary color link 
+} */
+
+.navbar-nav {
+  margin-left: 0; /* Remove any extra margin on the left */
+  padding-left: 1; /* Adjust padding if needed */
 }
 
+.nav-item {
+  margin-right: 0.5rem; /* Adjust spacing between nav items */
+}
 
- /* #navbarScroll
- {
-  padding-right: 82px;
-  
- } */
+@media (max-width: 768px) {
+  .navbar-custom-padding {
+    margin-top: 0.2rem !important; /* Adjust as needed */
+    margin-bottom: 4rem !important; /* Adjust as needed */
+  }  
+ 
+}
+
+/* Apply specific styles to the navbar button if needed */
+.navbar-custom-button
+{
+  margin-right: 18px;
+  /* padding-left: 20px; */
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .navbar-custom-button {
+    margin-top: 1rem !important; /* Adjust as needed */
+    padding-bottom: 1rem !important; /* Adjust as needed */
+
+  }
+}  

@@ -4,8 +4,12 @@ import jobData from '../Data/Jobdata.json'; // Ensure this is the correct path
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Navbar, Nav, NavDropdown, Dropdown, Container, Button } from 'react-bootstrap';
-import '../App.css'; // Ensure the path to your CSS file is correct
 
+// Map images from the jobData JSON file
+const imageMap = {
+  "carousel_1": require('../Data/img/carousel-1.jpg'),
+  "carousel_2": require('../Data/img/carousel-2.jpg'),
+};
 
 const NavbarComponent = () => {
   const config = jobData.user[0];
@@ -20,31 +24,34 @@ const NavbarComponent = () => {
 
   return (
     <Container fluid className="container-xxl p-0">
-      {/* Full-screen container */}
-      <Navbar bg="white" expand="lg" className="shadow sticky-top p-0 w-100 navbar-padding">
-        {/* Brand Section */}
-        <Navbar.Brand as={Link} to="/index" className="d-flex align-items-center text-center py-0 px-lg-5 px-3">
-          <h1 className="m-0 !text-customgreen font-inter font-40xl font-bold">
-            {config.brand || "Brand Name"}
-          </h1>
-        </Navbar.Brand>
+{/* Navbar ----Start */}
 
-        {/* Navbar Toggle for smaller screens */}
-        <Navbar.Toggle aria-controls="navbarScroll" className="me-6" />
+    {/* <Navbar bg="white" expand="lg" className="shadow sticky-top p-0  w-100 align-items-center navbar-custom-padding"> */}
+    <Navbar 
+        bg="white" 
+        expand="lg" 
+        className="shadow sticky-top p-0 w-100 align-items-center navbar-custom navbar-custom-padding"
+      >
 
-        {/* Navbar Collapse */}
-        <Navbar.Collapse id="navbarScroll">
-          <Nav className="ms-auto d-flex align-items-center">
-            {/* Primary Links */}
-            {config.link_1 && config.link_1.map((link, index) => (
-              <Nav.Link
-                key={index}
-                as={Link}
-                to={link.to}
-                className={`nav-item !text-customblack font-hebbo font-15xl font-bold hover:bg-white hover:!text-customgreen ${isActive(link.to) ? "active" : ""}`}
-              >
-                {link.label}
-              </Nav.Link>
+      <Navbar.Brand as={Link} to="/index" className="d-flex align-items-center text-center py-0 px-lg-5 px-3">
+        <h1 className="m-0 !text-customgreen font-inter font-40xl font-bold">
+          {config.brand || "Brand Name"}
+        </h1>
+      </Navbar.Brand>
+
+      <Navbar.Toggle aria-controls="navbarScroll" className="me-6" />
+
+      <Navbar.Collapse id="navbarScroll">
+        <Nav className="ms-auto ms-auto p-4 p-lg-4 ">
+          {config.link_1 && config.link_1.map((link, index) => (
+            <Nav.Link
+              key={index}
+              as={Link}
+              to={link.to}
+              className={`nav-item !text-dark !text-15xl font-hebbo !font-normal hover:bg-white hover:!text-customgreen ${isActive(link.to) ? "active" : ""}`}
+            >
+              {link.label}
+            </Nav.Link>
             ))}
 
             {/* Dropdown 1 */}
@@ -61,7 +68,7 @@ const NavbarComponent = () => {
                     key={index}
                     as={Link}
                     to={item.to}
-                    className={`font-hebbo font-15xl ${isActive(item.to) ? "active" : ""}`}
+                    className={`!text-15xl font-hebbo font-bold ${isActive(item.to) ? "active" : ""}`}
                   >
                     {item.label}
                   </NavDropdown.Item>
@@ -83,7 +90,7 @@ const NavbarComponent = () => {
                     key={index}
                     as={Link}
                     to={item.to}
-                    className={`font-hebbo font-15xl ${isActive(item.to) ? "active" : ""}`}
+                    className={`!text-15xl font-hebbo font-bold ${isActive(item.to) ? "active" : ""}`}
                   >
                     {item.label}
                   </NavDropdown.Item>
@@ -97,7 +104,7 @@ const NavbarComponent = () => {
                 key={index}
                 as={Link}
                 to={link.to}
-                className={`nav-item !text-customblack font-hebbo font-15xl hover:bg-white hover:!text-customgreen ${isActive(link.to) ? "active" : ""}`}
+                className={`nav-item !text-dark !text-15xl font-hebbo !font-normal hover:bg-white hover:!text-customgreen ${isActive(link.to) ? "active" : ""}`}
               >
                 {link.label}
               </Nav.Link>
@@ -116,11 +123,12 @@ const NavbarComponent = () => {
             <Dropdown.Toggle
               as={Button}
               to={config.button.link}
-              className="text-white !bg-customgreen rounded-0 py-4 px-lg-5 font-inter font-40xl font-bold custom-button custom-dropdown-toggle"
-              style={{ height: "auto" }}
+              className="text-white !bg-customgreen rounded-0 py-4 px-lg-5 !font-inter font-16xl !font-bold custom-button custom-dropdown-toggle navbar-custom-button"
+              
+              style={{ height: "100%", border: "none" }}
             >
               {config.button.label || "Post a Job"}
-              <FontAwesomeIcon icon={faArrowRight} className="ms-2" />
+              <FontAwesomeIcon icon={faArrowRight} className="ms-1" />
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {config.sign_dropdown_button.map((btn, index) => (
@@ -135,12 +143,12 @@ const NavbarComponent = () => {
     </Container>
   );
 };
+/*Navbar--Ended*/
 
 const MainComponent = () => {
   return (
     <>
       <NavbarComponent />
-      {/* Additional components can be added here */}
     </>
   );
 };
