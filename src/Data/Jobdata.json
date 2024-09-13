@@ -56,11 +56,11 @@
             },
             "sign_dropdown_button": [
                 {
-                    "path": "/signin",
+                    "to": "/signin",
                     "label": "Sign In"
                 },
                 {
-                    "path": "/signup",
+                    "to": "/signup",
                     "label": "Sign Up"
                 }
             ],
@@ -103,94 +103,6 @@
                     "submitText": "Sign Up"
                 }
             }
-        }
-    ],
-    "icons": {
-        "arrow_right": "FaArrowRight",
-        "up_arrow": "FaArrowUp",
-        "mail_bulk": "FaMailBulk",
-        "headset": "FaHeadset",
-        "user_tie": "FaUserTie",
-        "tasks": "FaTasks",
-        "chart_line": "FaChartLine",
-        "hands_help": "FaHandsHelping",
-        "book_reader": "FaBookReader",
-        "compass": "FaDraftingCompass",
-        "check": "FaCheck",
-        "map": "FaMapMarkerAlt",
-        "clock": "FaClock",
-        "money_bill": "FaMoneyBill",
-        "heart": "FaHeart",
-        "calendar": "FaCalendarAlt",
-        "quote_left": "FaQuoteLeft",
-        "angle_right": "FaAngleRight",
-        "phone": "FaPhoneAlt",
-        "email_envelope": "FaEnvelope",
-        "twitter": "FaTwitter",
-        "facebook": "FaFacebookF",
-        "youtube": "FaYoutube",
-        "linkedin": "FaLinkedinIn"
-    },
-    "images": [
-        {
-            "image_id": "About-1",
-            "image_name": "About_1"
-        },
-        {
-            "image_id": "About-2",
-            "image_name": "About_2"
-        },
-        {
-            "image_id": "About-3",
-            "image_name": "About_3"
-        },
-        {
-            "image_id": "About-4",
-            "image_name": "About_4"
-        },
-        {
-            "image_id": "Carousel-1",
-            "image_name": "Carousel_1"
-        },
-        {
-            "image_id": "Carousel-2",
-            "image_name": "Carousel_2"
-        },
-        {
-            "image_id": "Com_logo-1",
-            "image_name": "Com_logo_1"
-        },
-        {
-            "image_id": "Com_logo-2",
-            "image_name": "Com_logo_2"
-        },
-        {
-            "image_id": "Com_logo-3",
-            "image_name": "Com_logo_3"
-        },
-        {
-            "image_id": "Com_logo-4",
-            "image_name": "Com_logo_4"
-        },
-        {
-            "image_id": "Com_logo-5",
-            "image_name": "Com_logo_5"
-        },
-        {
-            "image_id": "Testimonial-1",
-            "image_name": "Testimonial_1"
-        },
-        {
-            "image_id": "Testimonial-2",
-            "image_name": "Testimonial_2"
-        },
-        {
-            "image_id": "Testimonial-3",
-            "image_name": "Testimonial_3"
-        },
-        {
-            "image_id": "Testimonial-4",
-            "image_name": "Testimonial_4"
         }
     ],
     "carousel": {
@@ -262,5 +174,49 @@
             "id": 3,
             "name": "Location 3"
         }
-    ]
+    ],
+    
+        "jobcategories": [
+            {
+                "icon": "fa-mail-bulk",
+                "title": "Marketing",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-headset",
+                "title": "Customer Service",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-user-tie",
+                "title": "Human Resource",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-tasks",
+                "title": "Project Management",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-chart-line",
+                "title": "Business Development",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-hands-helping",
+                "title": "Sales & Communication",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-book-reader",
+                "title": "Teaching & Education",
+                "vacancies": "123 Vacancy"
+            },
+            {
+                "icon": "fa-drafting-compass",
+                "title": "Design & Creative",
+                "vacancies": "123 Vacancy"
+            }
+        ]
+      
 }

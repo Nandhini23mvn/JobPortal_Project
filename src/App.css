@@ -9,6 +9,12 @@
 .navbar-custom {
   height: 73px !important; /* Adjust the height as needed */
 }
+.container-xxl { width: 90% !important; } /* Default width */
+@media (max-width: 1440px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 1200px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 992px) { .container-xxl { width: 100% !important;  } }
+@media (max-width: 768px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 576px) { .container-xxl { width: 100% !important; } }
 
 :root {
   --dark: #2B3940;
@@ -17,32 +23,63 @@
 {
   color: var(--dark);
   font-family: "Heebo", sans-serif;
- 
   font-size: 15px !important;
   font-style: bold !important;
+  position: static;
+  
 }
-/* .navbar-light .navbar-brand, .navbar-light a.btn {
-  height: 75px;
-} */
-.container-xxl { width: 85% !important; } /* Default width */
-@media (max-width: 1440px) { .container-xxl { width: 100% !important; } }
-@media (max-width: 1200px) { .container-xxl { width: 100% !important; } }
-@media (max-width: 992px) { .container-xxl { width: 100% !important;  } }
-@media (max-width: 768px) { .container-xxl { width: 100% !important; } }
-@media (max-width: 576px) { .container-xxl { width: 100% !important; } }
+
+
+.dropdown-custom .dropdown-menu {
+  width: 100% !important; 
+  border: none; 
+}
+
+/* Change background color only on click */
+.dropdown-custom .dropdown-item:active {
+  background-color: #00b074 !important; /* Background color when clicked */
+  color: white !important; /* Text color when clicked */
+  border-radius: 2px !important; /* Border radius for clicked item */
+}
+
+/* Ensure dropdown item styles */
+.dropdown-item-custom {
+  border-radius: 2px !important; /* Match border-radius on hover and active */
+}
 
 /* Ensure content is centered vertically */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav {
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: start;
 }
-
-/* For mobile view (max-width: 768px) */
 @media (max-width: 768px) {
-  .navbar-custom {
-    height: 80px; /* Adjust the height for mobile view as needed */
+  .navbar-custom-padding {
+    padding: 0.2rem 0.5rem;
+    align-items: flex-start;
+  }
+
+  .navbar-custom .navbar-collapse {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow in mobile view */
+    background-color: white; /* Background for expanded nav */
+  }
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-nav {
+    height: 100%;
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Align content to the top left */
+  }
+
+  .navbar-custom .navbar-nav {
+    flex-direction: column; /* Stack nav items vertically */
+    padding: 1rem; /* Add padding if necessary for spacing */
+  }
+
+  .navbar-custom .navbar-toggler {
+    margin-right: 1.3rem; /* Adjust if needed for spacing */
+    border-radius: 2px !important;
   }
 }
 
@@ -52,63 +89,105 @@
 /* .custom-dropdown-toggle {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
+}*/
 .container-background {
-  background-color: #f0f2f5; /* Light background color 
+  background-color: #f0f2f5; /* Light background color */
 }
 
 .card-custom {
   max-width: 400px;
   border-radius: 8px;
   border: 1px solid #ddd; /* Light border color */
- /* box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+ box-shadow: 0 0 10px rgba(0,0,0,0.1); 
 }
 
 .card-title-custom {
-  color: #007bff; /*
+  color: #007bff; 
 }
 
 .form-control-custom {
-  border-color: #007bff; /* Primary color border 
+  border-color: #007bff; /* Primary color border */
 }
 
 .button-custom {
   background-color: #007bff;
-  border-color: #007bff; /* Primary color button 
+  border-color: #007bff; /* Primary color button */
 }
 
 .link-custom {
-  color: #007bff; /* Primary color link 
-} */
+  color: #007bff; /* Primary color link */
+} 
 
 .navbar-nav {
   margin-left: 0; /* Remove any extra margin on the left */
   padding-left: 1; /* Adjust padding if needed */
+  
 }
 
-.nav-item {
-  margin-right: 0.5rem; /* Adjust spacing between nav items */
+/* navbar-section-end */
+
+
+/* carousel start */
+.box {
+  position: relative;
+  padding: -5px 0 45px 35px;
 }
 
-@media (max-width: 768px) {
-  .navbar-custom-padding {
-    margin-top: 0.2rem !important; /* Adjust as needed */
-    margin-bottom: 4rem !important; /* Adjust as needed */
-  }  
- 
+.box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 9%; /* 10% width for the border */
+  height: 100%; /* Full height */
+  border-left: 15px solid #00B074; /* Border style */
+  border-top: 15px solid #00B074; /* Border style */
+  border-bottom: 15px solid #00B074; /* Border style */
+  border-right: none; /* No right border */
+  box-sizing: border-box;
 }
 
-/* Apply specific styles to the navbar button if needed */
-.navbar-custom-button
+.header-carousel .carousel-control-prev,
+.header-carousel .carousel-control-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF; /* White text color */
+    background: transparent; /* Transparent background */
+    border: 1px solid #FFFFFF; /* White border */
+    border-radius: 2px; /* Slightly rounded corners */
+    font-size: 22px; /* Larger icon size */
+    transition: 0.5s; /* Smooth transition for hover effects */
+}
+
+.header-carousel .carousel-control-prev:hover,
+.header-carousel .carousel-control-next:hover {
+    background-color:#00B074; /* White background on hover */
+    color:#FFFFFF; /* Change icon color to green on hover */
+}
+
+.header-carousel .carousel-control-prev-icon,
+.header-carousel .carousel-control-next-icon {
+    font-size: 22px; /* Icon size */
+}
+
+.header-carousel .carousel-control-prev {
+    left: 88.5% ; /* Adjust left position of the Previous button */
+    top:42%
+}
+
+.header-carousel .carousel-control-next {
+    right: 8.1%; /* Adjust right position of the Next button */
+    top:50%;
+}
+
+.container .p-4
 {
-  margin-right: 18px;
-  /* padding-left: 20px; */
-  width: 100%;
+  padding:35px !important;
 }
-@media (max-width: 768px) {
-  .navbar-custom-button {
-    margin-top: 1rem !important; /* Adjust as needed */
-    padding-bottom: 1rem !important; /* Adjust as needed */
 
-  }
-}  
+
+
