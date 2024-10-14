@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import jobData from '../Data/Jobdata.json';
+
+import {  faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
+import { faTwitter, faFacebookF, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Navbar, Nav, NavDropdown, Dropdown, Container, Button ,Carousel,  Row, Col , Form, } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Dropdown, Container, Button ,Carousel,  Row, Col , Form, InputGroup} from 'react-bootstrap';
 import { faMailBulk, faHeadset, faUserTie, faTasks, faChartLine, faHandsHelping, faBookReader, faDraftingCompass } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
+import { faMapMarkerAlt, faClock, faMoneyBillAlt, faCalendarAlt, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Tab, Tabs,  Image } from 'react-bootstrap';
+import aboutImg1 from '../Data/img/about-1.jpg';
+import aboutImg2 from '../Data/img/about-2.jpg';
+import aboutImg3 from '../Data/img/about-3.jpg';
+import aboutImg4 from '../Data/img/about-4.jpg';
+import jobData from '../Data/Jobdata.json';
 
 
 const NavbarComponent = () => {
@@ -24,12 +35,12 @@ const NavbarComponent = () => {
   if (!config) return null;
 
   return (
-    <Container fluid className="container-xxl p-0">
+    <Container fluid className=" sticky-top container-xxl  p-0">
     {/* <Navbar bg="white" expand="lg" className="shadow sticky-top p-0  w-100 align-items-center navbar-custom-padding"> */}
     <Navbar 
         bg="white" 
         expand="lg" 
-        className="sticky-top shadow  p-0 w-100 align-items-center navbar-custom navbar-custom-padding"
+        className=" shadow  p-0 w-100 align-items-center navbar-custom navbar-custom-padding"
         >
 
       <Navbar.Brand as={Link} to="/index" className="d-flex align-items-center text-center py-0 px-lg-5 px-3">
@@ -312,13 +323,13 @@ const JobCategories = () => {
   const categories = jobData.jobcategories;
 
   return (
-    <Container fluid className=" container-xxl py-5 shadow">
+    <Container fluid className=" container-xxl py-5 shadow ">
       <Container>
-        <h1 className="text-center mb-5">Explore By Category</h1>
+        <h1 className="text-center mb-5 font-inter font-40xl font-bold text-dark">Explore By Category</h1>
         <Row className="g-4">
           {categories.map((category, index) => (
             <Col lg={3} sm={6} key={index} className="wow fadeInUp" data-wow-delay={`${0.1 * (index + 1)}s`}>
-              <div className="cat-item rounded shadow p-4">
+              <div className="cat-item  shadow p-4">
                 <FontAwesomeIcon icon={icons[category.icon]} size="3x " className="!text-customgreen mb-4 "   />
                 <h6 className="mb-3">{category.title}</h6>
                 <p className="mb-0">{category.vacancies}</p>
@@ -332,12 +343,359 @@ const JobCategories = () => {
 };
 // {/* Category--Ended    */}
 
+
+//{About-section start}
+
+const AboutSection = () => {
+  const { title, description, points, button } = jobData;
+  const images = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
+ 
+  return (
+    <Container fluid className="py-5 container-xxl shadow  ">
+      <Container>
+        <Row className="g-5 align-items-center ">
+          <Col lg={6} className="wow fadeIn">
+          <Row className="g-0 about-bg overflow-hidden"> {/* Apply custom class here */}
+          {images.map((image, index) => (
+                <Col
+                  xs={6}
+                  className={`text-${index % 2 === 0 ? 'start' : 'end'}`}
+                  key={index}
+                >
+                  <img
+                    className={`img-fluid ${index === 1 || index === 2 ? 'w-85' : 'w-100'}`}
+                    src={image} // Use imported image
+                    alt={`About ${index + 1}`}
+                    style={index === 1 ? { marginTop: '15%' } : {}}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </Col>
+          <Col lg={6} className="wow fadeIn" data-wow-delay="0.5s">
+            <h1 className="mb-4 font-inter font-40xl font-bold text-dark">{title}</h1>
+            <p className="mb-4 font-15xl font-hebbo font-normal text-lightgrey">{description}</p>
+            {points.map((point, index) => (
+              <p key={index} className="font-15xl font-hebbo font-normal text-lightgrey">
+                <FontAwesomeIcon icon={faCheck} className="text-customgreen me-3 " />
+                {point }
+              </p>
+            ))}
+            <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href={button.link}>
+              {button.text }
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </Container>
+  );
+};
+// {About End}
+
+// {Jobs Start}
+
+const JobsListing = () => {
+  const { featuredJobs, fullTimeJobs, partTimeJobs } = jobData;
+
+  return (
+    <Container className=" py-5 container-xxl shadow" fluid >
+      <h1 className="text-center mb-5 font-inter font-40xl font-bold text-dark">Job Listing</h1>
+      
+      <Tabs defaultActiveKey="tab-1" className="justify-content-center mb-5 font-15xl font-hebbo font-bold text-custom-dark !important">
+        <Tab eventKey="tab-1" title="Featured">
+          {featuredJobs.map((job, index) => (
+            <JobItem key={index} {...job} />
+          ))}
+             <div className="text-center mt-5">
+          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href="/featured-jobs">
+            Browse More Jobs
+          </Button>
+          </div>
+        </Tab>
+        <Tab eventKey="tab-2" title="Full Time">
+          {fullTimeJobs.map((job, index) => (
+            <JobItem key={index} {...job} />
+          ))}
+          <div className="text-center mt-5">
+          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href="/featured-jobs">
+            Browse More Jobs
+          </Button>
+          </div>
+        </Tab>
+        <Tab eventKey="tab-3" title="Part Time">
+          {partTimeJobs.map((job, index) => (
+            <JobItem key={index} {...job} />
+          ))}
+          <div className="text-center mt-5">
+          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href="/featured-jobs">
+            Browse More Jobs
+          </Button>
+          </div>
+        </Tab>
+      </Tabs>
+    </Container>
+  );
+}
+
+const JobItem = ({ title, company, location, type, salary, deadline, img }) => (
+  <Row className="g-4 job-item p-4 mb-4">
+    <Col sm={12} md={8} className="d-flex align-items-center">
+      <Image
+        src={img}
+        alt={`Company logo for ${company}`}
+        className="flex-shrink-0 img-fluid border rounded"
+        style={{ width: '80px', height: '80px' }}
+      />
+      <div className="text-start ps-4">
+        <h5 className="mb-3">{title}</h5>
+        <span className="text-truncate me-3">
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="text-customgreen me-2" />
+          {location}
+        </span>
+        <span className="text-truncate me-3">
+          <FontAwesomeIcon icon={faClock} className="text-customgreen me-2" />
+          {type}
+        </span>
+        <span className="text-truncate me-0">
+          <FontAwesomeIcon icon={faMoneyBillAlt} className="text-customgreen me-2" />
+          {salary}
+        </span>
+      </div>
+    </Col>
+    <Col sm={12} md={4} className="d-flex flex-column align-items-start align-items-md-end justify-content-center">
+      <div className="d-flex mb-3">
+        <Button variant="light" className="btn-square me-3" aria-label="Save job">
+          <FontAwesomeIcon icon={faHeart} className="text-customgreen" />
+        </Button>
+        <Button className="!bg-customgreen text-white" style={{  border: "none" ,borderRadius:"none !important"}}variant="primary" aria-label="Apply for job">
+          Apply Now
+        </Button>
+      </div>
+      <small className="text-truncate">
+        <FontAwesomeIcon icon={faCalendarAlt} className="text-customgreen me-2" />
+        Date Line: {deadline}
+      </small>
+    </Col>
+  </Row>
+);
+// {job---ended}
+
+
+// const TestimonialCarousel = () => {
+//   const [testimonials, setTestimonials] = useState([]);
+
+//   useEffect(() => {
+//     setTestimonials(jobData.testimonial);
+//   }, []);
+
+//   return (
+//     <div className='container-xxl p-0'>
+//         <div className="testimonial-carousel ">
+//       <Carousel>
+//         {testimonials.map((testimonial, index) => (
+//           <Carousel.Item key={index}>
+//             <div className="testimonial-item bg-light rounded p-4">
+//               <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+//               <p>{testimonial.quote}</p>
+//               <div className="d-flex align-items-center">
+//                 <img
+//                   className="img-fluid flex-shrink-0 rounded"
+//                   src={testimonial.image}
+//                   alt={testimonial.name}
+//                   style={{ width: '50px', height: '50px' }}
+//                 />
+//                 <div className="ps-3">
+//                   <h5 className="mb-1">{testimonial.name}</h5>
+//                   <small>{testimonial.profession}</small>
+//                 </div>
+//               </div>
+//             </div>
+//           </Carousel.Item>
+//         ))}
+//       </Carousel>
+//     </div>
+//     </div>
+  
+    
+//   );
+// };
+
+const TestimonialCarousel = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    setTestimonials(jobData.testimonial);
+  }, []);
+
+  return (
+    <div className="container-xxl py-5 shadow">
+      <div className="container">
+        <h1 className="text-center mb-5">Our Clients Say!!!</h1>
+        <Carousel className="testimonial-carousel" indicators>
+          {testimonials.map((testimonial, index) => (
+            <Carousel.Item key={index} className="testimonial-item d-flex flex-column bg-light rounded p-4">
+              <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+              <p className="">{testimonial.quote}</p>
+              <div className="d-flex align-items-center">
+                <img
+                  className="img-fluid flex-shrink-0 rounded"
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  style={{ width: '50px', height: '50px' }}
+                />
+                <div className="ps-3">
+                  <h5 className="mb-1">{testimonial.name}</h5>
+                  <small>{testimonial.profession}</small>
+                </div>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    </div>
+  );
+};
+
+
+// Footer---start
+
+
+const Footer = () => {
+  return (
+        <div className="container-xxl  bg-dark text-white-50 footer  mt-5">
+
+<Row className="g-5 ">
+      {/* Company Section */}
+      <Col lg={3} md={6}>
+        <h5 className="text-white mb-4">Company</h5>
+        <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/about-us"> About Us</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        </Col>
+      </Row>
+      </Col>
+      
+      {/* Quick Links Section */}
+      <Col lg={3} md={6}>
+        <h5 className="text-white mb-4">Quick Links</h5>
+        <Row>
+        <Col>
+          <Button variant="link" className="text-white-50 " href="/about-us">About Us</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        </Col>
+      </Row>
+      </Col>
+      
+      {/* Contact Section */}
+      <Col lg={3} md={6}>
+        <h5 className="text-white mb-4">Contact</h5>
+        <p className="mb-2"><FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />123 Street, New York, USA</p>
+        <p className="mb-2"><FontAwesomeIcon icon={faPhoneAlt} className="me-3" />+012 345 67890</p>
+        <p className="mb-2"><FontAwesomeIcon icon={faEnvelope} className="me-3" />info@example.com</p>
+        <div className="d-flex pt-2">
+          <Button variant="outline-light" className="btn-social" href="https://twitter.com">
+            <FontAwesomeIcon icon={faTwitter} />
+          </Button>
+          <Button variant="outline-light" className="btn-social" href="https://facebook.com">
+            <FontAwesomeIcon icon={faFacebookF} />
+          </Button>
+          <Button variant="outline-light" className="btn-social" href="https://youtube.com">
+            <FontAwesomeIcon icon={faYoutube} />
+          </Button>
+          <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </Button>
+        </div>
+      </Col>
+      
+      {/* Newsletter Section */}
+      <Col lg={3} md={6}>
+        <h5 className="text-white mb-4">Newsletter</h5>
+        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+        <div className="position-relative mx-auto" style={{ maxWidth: '400px' }}>
+          <Form.Control className="bg-transparent w-100 py-3 ps-4 pe-5" type="email" placeholder="Your email" />
+          <Button type="button" className="btn btn-customgreen  py-2 position-absolute top-0 end-0 mt-2 me-2" 
+          style={{ backgroundColor: '#00b074', borderColor: '#00b074' }}>
+            SignUp
+          </Button>
+        </div>
+      </Col>
+    </Row>
+
+
+
+     <Container className="bg-dark text-white-50 py-4">
+     <div className="copyright">
+       <Row>
+         <Col md={6} className="text-center text-md-start mb-3 mb-md-0">
+           &copy; <a className="border-bottom text-white no-underline" href="#">Your Site Name</a>, All Rights Reserv
+           Designed By <a className="border-bottom text-white no-underline" href="https://htmlcodex.com">HTML Codex</a>
+         </Col>
+         <Col md={6} className="text-center text-md-end">
+           <div className="footer-menu">
+             <a className="text-white me-3 no-underline" href="">Home</a>
+             <a className="text-white me-3 no-underline" href="">Cookies</a>
+             <a className="text-white me-3 no-underline" href="">Help</a>
+             <a className="text-white no-underline" href="">FQAs</a>
+           </div>
+         </Col>
+       </Row>
+     </div>
+   </Container>
+   </div>
+  );
+};
+
+
 const MainComponent = () => {
   return (
     <>
       <NavbarComponent />
       <CarouselFadeExample />
       <JobCategories />
+      <AboutSection/>
+      <JobsListing/>
+      <TestimonialCarousel/>
+      <Footer/>
     </>
   );
 };

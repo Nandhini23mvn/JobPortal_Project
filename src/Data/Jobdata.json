@@ -175,48 +175,250 @@
             "name": "Location 3"
         }
     ],
-    
-        "jobcategories": [
-            {
-                "icon": "fa-mail-bulk",
-                "title": "Marketing",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-headset",
-                "title": "Customer Service",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-user-tie",
-                "title": "Human Resource",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-tasks",
-                "title": "Project Management",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-chart-line",
-                "title": "Business Development",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-hands-helping",
-                "title": "Sales & Communication",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-book-reader",
-                "title": "Teaching & Education",
-                "vacancies": "123 Vacancy"
-            },
-            {
-                "icon": "fa-drafting-compass",
-                "title": "Design & Creative",
-                "vacancies": "123 Vacancy"
-            }
-        ]
-      
+    "jobcategories": [
+        {
+            "icon": "fa-mail-bulk",
+            "title": "Marketing",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-headset",
+            "title": "Customer Service",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-user-tie",
+            "title": "Human Resource",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-tasks",
+            "title": "Project Management",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-chart-line",
+            "title": "Business Development",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-hands-helping",
+            "title": "Sales & Communication",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-book-reader",
+            "title": "Teaching & Education",
+            "vacancies": "123 Vacancy"
+        },
+        {
+            "icon": "fa-drafting-compass",
+            "title": "Design & Creative",
+            "vacancies": "123 Vacancy"
+        }
+    ],
+    "images": [
+        "img/about-1.jpg",
+        "img/about-2.jpg",
+        "img/about-3.jpg",
+        "img/about-4.jpg"
+    ],
+    "title": "We Help To Get The Best Job And Find A Talent",
+    "description": "Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet",
+    "points": [
+        "Tempor erat elitr rebum at clita",
+        "Aliqu diam amet diam et eos",
+        "Clita duo justo magna dolore erat amet"
+    ],
+    "button": {
+        "text": "Read More",
+        "link": ""
+    },
+    "featuredJobs": [
+        {
+            "title": "Software Engineer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images//com-logo-1.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Marketing Manager",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images//com-logo-2.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Product Designer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images//com-logo-3.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Creative Director",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images//com-logo-4.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": " Wordpress Developer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images//com-logo-5.jpg",
+            "deadline": "01 Jan, 2045"
+        }
+    ],
+    "fullTimeJobs": [
+        {
+            "title": "Software Engineer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-1.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Marketing Manager",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-2.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Product Designer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-3.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Creative Director",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-4.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": " Wordpress Developer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-5.jpg",
+            "deadline": "01 Jan, 2045"
+        }
+    ],
+    "partTimeJobs": [
+        {
+            "title": "Software Engineer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-1.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Marketing Manager",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-2.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Product Designer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-3.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": "Creative Director",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-4.jpg",
+            "deadline": "01 Jan, 2045"
+        },
+        {
+            "title": " Wordpress Developer",
+            "location": "New York, USA",
+            "type": "Full Time",
+            "salary": "$123 - $456",
+            "img": "images/com-logo-5.jpg",
+            "deadline": "01 Jan, 2045"
+        }
+    ],
+   "testimonial": [
+   
+    {
+        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name": "Client Name",
+        "profession": "Profession ",
+        "image": "images/testimonial-1.jpg"
+      },
+      {
+        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name": "Client Name",
+        "profession": "Profession ",
+        "image": "images/testimonial-2.jpg"
+      },{
+        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name": "Client Name",
+        "profession": "Profession ",
+        "image": "images/testimonial-3.jpg"
+      },{
+        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name": "Client Name",
+        "profession": "Profession ",
+        "image": "images/testimonial-4.jpg"
+      },
+      {
+        "footer": {
+          "companyLinks": [
+            { "text": "About Us", "url": "/about-us" },
+            { "text": "Contact Us", "url": "/contact-us" },
+            { "text": "Our Services", "url": "/our-services" },
+            { "text": "Privacy Policy", "url": "/privacy-policy" },
+            { "text": "Terms & Condition", "url": "/terms" }
+          ],
+          "quickLinks": [
+            { "text": "About Us", "url": "/about-us" },
+            { "text": "Contact Us", "url": "/contact-us" },
+            { "text": "Our Services", "url": "/our-services" },
+            { "text": "Privacy Policy", "url": "/privacy-policy" },
+            { "text": "Terms & Condition", "url": "/terms" }
+          ],
+          "contact": {
+            "address": "123 Street, New York, USA",
+            "phone": "+012 345 67890",
+            "email": "info@example.com",
+            "socialMedia": [
+              { "icon": "faTwitter", "url": "https://twitter.com" },
+              { "icon": "faFacebookF", "url": "https://facebook.com" },
+              { "icon": "faYoutube", "url": "https://youtube.com" },
+              { "icon": "faLinkedinIn", "url": "https://linkedin.com" }
+            ]
+          },
+          "newsletter": {
+            "description": "Dolor amet sit justo amet elitr clita ipsum elitr est.",
+            "placeholder": "Your email",
+            "buttonText": "SignUp"
+          }
+        }
+      }
+        
+
+  ]
 }

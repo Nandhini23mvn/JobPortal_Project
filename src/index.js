@@ -29,8 +29,8 @@ root.render(
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SignInPage/>} />
         {/* <Route path="/about" element={<About />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/project" element={<Project />} />
+        <Route path="/service" element={<Service />} /> */}
+        {/* <Route path="/project" element={<Project />} />
         <Route path="/team" element={<TheTeam />} />
         <Route path="/testimonial" element={<TestimonialHeader />} />
         <Route path="/blog" element={<Bloggrid />} />
