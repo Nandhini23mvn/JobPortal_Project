@@ -9,7 +9,8 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignInPage from "./Components/SignIn";
 import SignUpPage from "./Components/SignUp";
-
+import AdminLogin from './Admin/AdminLogin';
+import AdminPanel from './Admin/AdminPanel';
 
 // import About from "./pages/about";
 // import Service from "./pages/Service";
@@ -28,9 +29,14 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SignInPage/>} />
+
+
+        <Route path="/login" element={<AdminLogin/>} />
+        <Route path="/admin" element={<AdminPanel />} /> 
+
         {/* <Route path="/about" element={<About />} />
-        <Route path="/service" element={<Service />} /> */}
-        {/* <Route path="/project" element={<Project />} />
+        <Route path="/service" element={<Service />} /> 
+         <Route path="/project" element={<Project />} />
         <Route path="/team" element={<TheTeam />} />
         <Route path="/testimonial" element={<TestimonialHeader />} />
         <Route path="/blog" element={<Bloggrid />} />

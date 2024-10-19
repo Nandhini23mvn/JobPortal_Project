@@ -1,9 +1,11 @@
 
-import React, { useState } from 'react';
-import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+import React, { useState } from "react";
+import { Form, Button, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -11,8 +13,9 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    
     // Authentication logic
-    if (username === 'kannanadmin' && password === 'kannanpass') {
+    if (username === 'Admin' && password === 'Nani1997') {
       navigate('/admin'); // Redirect to admin panel if credentials are correct
     } else {
       setError('Invalid username or password');
@@ -20,39 +23,63 @@ const LoginPage = () => {
   };
 
   return (
-    <Container fluid className="d-flex align-items-center justify-content-center" style={{ height: '100vh', backgroundColor: '#f8f9fa' }}>
-      <Card style={{ width: '30rem', padding: '2rem', border: '1px solid lightgray', backgroundColor: '#fff' }}>
-        <h2 className="text-center" style={{ color: '#00a86b' }}>Admin Login</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
+    <Container 
+      fluid 
+      className="min-vh-100 d-flex align-items-center justify-content-center bg-cover bg-center bg-registerbg"
+      style={{ backgroundColor: '#7efcd1' }}
+    >
+      <div className="bg-white bg-opacity-30 p-7 rounded-lg shadow-lg backdrop-blur-md" style={{ width: '500px' }}>
+        <h2 className="text-center p-4 mb-6 text-2xl font-semibold" style={{ color: '#28a745' }}>
+          Admin Login
+        </h2>
+        
+        {error && (
+          <div className="text-center text-danger mb-3">
+            {error}
+          </div>
+        )}
+
         <Form onSubmit={handleLogin}>
-          <Form.Group controlId="username">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="password" className="mt-3">
+          <Row className="mb-3 px-5">
+            <Form.Group controlId="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter your username" 
+                value={username}
+                onChange={(e) => setUsername(e.target.value)} 
+                required 
+                style={{ width: '400px' }}
+                className="mx-auto" // Centers the input field horizontally
+              />
+            </Form.Group>
+          </Row>
+          
+          <Form.Group className="mb-3 px-5">
             <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter password"
+            <Form.Control 
+              type="password" 
+              placeholder="Enter your password" 
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+              style={{ width: '400px' }} 
+              className="mx-auto" // Centers the input field horizontally
             />
           </Form.Group>
-          <Form.Text className="text-muted mb-3">
-            <a href="/forgot-password">Forgotten Password?</a>
-          </Form.Text>
-          <Button type="submit" variant="success" className="w-100">
-            Login
-          </Button>
+
+          <div className="text-center">
+            <Button 
+              type="submit" 
+              className="border-0 mb-5 mt-5 text-white" 
+              style={{ backgroundColor: '#28a745', color: '#fff', width: '400px' }}>
+              Login
+            </Button>
+          </div>
         </Form>
-      </Card>
+      </div>
     </Container>
   );
 };
 
-export default LoginPage;
+export default Login;

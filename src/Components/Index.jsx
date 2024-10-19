@@ -6,7 +6,7 @@ import {  faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Navbar, Nav, NavDropdown, Dropdown, Container, Button ,Carousel,  Row, Col , Form, InputGroup} from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Dropdown, Container, Button ,Carousel,  Row, Col , Form} from 'react-bootstrap';
 import { faMailBulk, faHeadset, faUserTie, faTasks, faChartLine, faHandsHelping, faBookReader, faDraftingCompass } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -667,15 +667,15 @@ const Footer = () => {
      <div className="copyright">
        <Row>
          <Col md={6} className="text-center text-md-start mb-3 mb-md-0">
-           &copy; <a className="border-bottom text-white no-underline" href="#">Your Site Name</a>, All Rights Reserv
+           &copy; <button className="border-bottom text-white no-underline" href="#">Your Site Name</button>, All Rights Reserv
            Designed By <a className="border-bottom text-white no-underline" href="https://htmlcodex.com">HTML Codex</a>
          </Col>
          <Col md={6} className="text-center text-md-end">
            <div className="footer-menu">
-             <a className="text-white me-3 no-underline" href="">Home</a>
-             <a className="text-white me-3 no-underline" href="">Cookies</a>
-             <a className="text-white me-3 no-underline" href="">Help</a>
-             <a className="text-white no-underline" href="">FQAs</a>
+           <button className="text-white me-3 no-underline">Home</button>
+<button className="text-white me-3 no-underline">Cookies</button>
+<button className="text-white me-3 no-underline">Help</button>
+<button className="text-white no-underline">FAQs</button>
            </div>
          </Col>
        </Row>
