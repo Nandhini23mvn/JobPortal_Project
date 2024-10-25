@@ -12,7 +12,7 @@ import SignUpPage from "./Components/SignUp";
 import AdminLogin from './Admin/AdminLogin';
 import AdminPanel from './Admin/AdminPanel';
 
-// import About from "./pages/about";
+import About from "./Components/About";
 // import Service from "./pages/Service";
 // import Project from "./pages/Project";
 // import TheTeam from "./pages/TheTeam"
@@ -34,8 +34,8 @@ root.render(
         <Route path="/login" element={<AdminLogin/>} />
         <Route path="/admin" element={<AdminPanel />} /> 
 
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/service" element={<Service />} /> 
+         <Route path="/about" element={<About />}/>
+        {/* <Route path="/service" element={<Service />} />  
          <Route path="/project" element={<Project />} />
         <Route path="/team" element={<TheTeam />} />
         <Route path="/testimonial" element={<TestimonialHeader />} />
