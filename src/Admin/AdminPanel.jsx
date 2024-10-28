@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row, Table, Modal } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Image,  } from 'react-bootstrap';
+import { FaBars, FaCaretDown, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
 
 const AdminPanel = () => {
   const [activeButton, setActiveButton] = useState("dashboard");
@@ -29,6 +31,9 @@ const AdminPanel = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [showModal, setShowModal] = useState(false); // For viewing user details
   const [viewUser, setViewUser] = useState(null); // To hold user details for viewing
+
+
+  
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
@@ -213,13 +218,48 @@ const AdminPanel = () => {
 
   return (
     <Container fluid>
+      <Navbar bg="white" expand="lg" style={{ height: '60px' }} className="container-fluid px-1">
+      <Container fluid>
+        <Navbar.Brand >
+         <h2>AdminPanel</h2>
+        </Navbar.Brand>
+      
+        {/* Navbar Content */}
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <NavDropdown
+              title={
+                <span>
+                  <Image
+                    src="https://www.ecomdeveloper.com/demo/image/cache/profile-45x45.png"
+                    roundedCircle
+                    width="30"
+                    alt="Demo User"
+                  />
+                  Demo User 
+                </span>
+              }
+              id="user-dropdown"
+              align="end"
+            >
+              
+              
+            </NavDropdown>
+            
+            <Nav.Link href="http://localhost:3000/login">
+              <FaSignOutAlt className="me-1" /> <span className="d-none d-lg-inline">Logout</span>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
       <Row>
-        <Col md={3} className="bg-light sidebar" style={{ height: "100vh" }}>
-          <h2>Admin Panel</h2>
-          <Button
+        <Col md={2} className="bg-dark sidebar " style={{ height: "100vh" }}>
+        
+        <Button
             variant={activeButton === "dashboard" ? "primary" : "secondary"}
             onClick={() => handleButtonClick("dashboard")}
-            className="w-100 mb-2"
+            className="w-100 mb-3"
           >
             Dashboard
           </Button>

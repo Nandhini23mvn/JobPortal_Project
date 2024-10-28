@@ -12,8 +12,9 @@ import SignUpPage from "./Components/SignUp";
 import AdminLogin from './Admin/AdminLogin';
 import AdminPanel from './Admin/AdminPanel';
 
+import Index from "./Components/Index";
 import About from "./Components/About";
-// import Service from "./pages/Service";
+import Joblist from "./Components/Joblist";
 // import Project from "./pages/Project";
 // import TheTeam from "./pages/TheTeam"
 // import TestimonialHeader from "./pages/Testimonial";
@@ -34,14 +35,22 @@ root.render(
         <Route path="/login" element={<AdminLogin/>} />
         <Route path="/admin" element={<AdminPanel />} /> 
 
+        <Route path="/index" element={<Index />}/>
          <Route path="/about" element={<About />}/>
-        {/* <Route path="/service" element={<Service />} />  
-         <Route path="/project" element={<Project />} />
-        <Route path="/team" element={<TheTeam />} />
-        <Route path="/testimonial" element={<TestimonialHeader />} />
-        <Route path="/blog" element={<Bloggrid />} />
-        <Route path="/detail" element={<Blogdetail />} />
-        <Route path="/contact" element={<Contact />} /> */}
+         <Route path="/index/list" element={<Joblist />}/>
+         <Route path="/index/detail" element={<Joblist />}/>
+         <Route path="/about/list" element={<Joblist />}/>
+         <Route path="/about/detail" element={<Joblist />}/>
+         <Route path="/category" element={<Joblist />}/>
+         <Route path="/contact" element={<Joblist />}/>
+         <Route path="/testimonial" element={<Joblist />}/>
+         <Route path="/404" element={<Joblist />}/>
+
+
+
+
+
+      
       </Routes>
     </Router>
   </React.StrictMode>
