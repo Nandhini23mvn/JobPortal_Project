@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row, Table, Modal } from "react-bootstrap";
-import { Navbar, Nav, NavDropdown, Image,  } from 'react-bootstrap';
-import { FaBars, FaCaretDown, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+import { Navbar, Nav, Image,  } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { faUserPlus, faUsersCog } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons'; // Ensure this import is present
+import { faUser,faCaretDown } from '@fortawesome/free-solid-svg-icons'; // Ensure you import the icon correctly
 
 const AdminPanel = () => {
   const [activeButton, setActiveButton] = useState("dashboard");
@@ -217,68 +221,73 @@ const AdminPanel = () => {
   };
 
   return (
-    <Container fluid>
-      <Navbar bg="white" expand="lg" style={{ height: '60px' }} className="container-fluid px-1">
-      <Container fluid>
-        <Navbar.Brand >
-         <h2>AdminPanel</h2>
+    <Container fluid className="p-0">
+    <Navbar bg="white" expand="lg" style={{ height: '60px' }} className="sticky shadow p-0 w-100">
+    <Navbar.Brand >
+        <h2 className="p-3" style={{ color: '#00B074' }}>Administration </h2>
         </Navbar.Brand>
       
         {/* Navbar Content */}
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <NavDropdown
-              title={
-                <span>
-                  <Image
-                    src="https://www.ecomdeveloper.com/demo/image/cache/profile-45x45.png"
-                    roundedCircle
-                    width="30"
-                    alt="Demo User"
-                  />
-                  Demo User 
-                </span>
-              }
-              id="user-dropdown"
-              align="end"
-            >
-              
-              
-            </NavDropdown>
-            
+    <Nav className="ms-auto">
+        <Nav.Link href="#profile" className="d-flex align-items-center">
+            <Image
+                src="https://www.ecomdeveloper.com/demo/image/cache/profile-45x45.png"
+                roundedCircle
+                width="30"
+                alt="Demo User"
+            />
+            <span className="ms-2" style={{ color: '#00B074' }}>Demo User</span>
+        </Nav.Link>
             <Nav.Link href="http://localhost:3000/login">
-              <FaSignOutAlt className="me-1" /> <span className="d-none d-lg-inline">Logout</span>
+            <button className="me-2 pt-1 btn btn-success">
+             <span className="d-none d-lg-inline">Logout</span>
+            </button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
-      <Row>
-        <Col md={2} className="bg-dark sidebar " style={{ height: "100vh" }}>
-        
-        <Button
-            variant={activeButton === "dashboard" ? "primary" : "secondary"}
-            onClick={() => handleButtonClick("dashboard")}
-            className="w-100 mb-3"
-          >
-            Dashboard
-          </Button>
-          <Button
-            variant={activeButton === "addUser" ? "primary" : "secondary"}
-            onClick={() => handleButtonClick("addUser")}
-            className="w-100 mb-2"
-          >
-            Add User
-          </Button>
-          <Button
-            variant={activeButton === "manageUser" ? "primary" : "secondary"}
-            onClick={() => handleButtonClick("manageUser")}
-            className="w-100"
-          >
-            Manage Users
-          </Button>
-        </Col>
 
+    <Row>
+      <Col md={2} className="bg-dark sidebar" style={{ height: "100vh", padding: '1rem' }}>
+        <Button
+          variant={activeButton === "dashboard" ? "primary" : "secondary"}
+          onClick={() => handleButtonClick("dashboard")}
+          className="mb-4 text-white w-100"
+          style={{ backgroundColor: '#171b21' }}
+        >
+          <FontAwesomeIcon icon={faTachometerAlt} className="me-2" />
+          Dashboard
+        </Button>
+
+        <Dropdown className="w-100">
+          <Dropdown.Toggle variant="secondary" style={{ backgroundColor: '#171b21', color: 'white', width: '100%' }}>
+            User Management
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu style={{ backgroundColor: '#171b21' }}>
+            <Dropdown.Item
+              eventKey="1"
+              onClick={() => handleButtonClick("addUser")}
+              active={activeButton === "addUser"}
+              style={{ color: 'white' }}
+            >
+              <FontAwesomeIcon icon={faUserPlus} className="me-2" />
+              Add User
+            </Dropdown.Item>
+            <Dropdown.Item
+              eventKey="2"
+              onClick={() => handleButtonClick("manageUser")}
+              active={activeButton === "manageUser"}
+              style={{ color: 'white' }}
+            >
+              <FontAwesomeIcon icon={faUsersCog} className="me-2" />
+              Manage Users
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Col>
+   
         <Col md={9}>
           {activeButton === "addUser" && (
             <form onSubmit={handleSubmit}>
