@@ -1,6 +1,6 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
 
 #navbarScrollingDropdown1:hover,#navbarScrollingDropdown2:hover,a.nav-link.active 
 {
@@ -10,12 +10,14 @@
 .navbar-custom {
   height: 73px !important; /* Adjust the height as needed */
 }
-.container-xxl { width: 90% !important; } /* Default width */
-@media (max-width: 1440px) { .container-xxl { width: 100% !important; } }
+/* .container-xxl { width: 90% !important; 
+
+}  */
+/* @media (max-width: 1440px) { .container-xxl { width: 100% !important; } }
 @media (max-width: 1200px) { .container-xxl { width: 100% !important; } }
 @media (max-width: 992px) { .container-xxl { width: 100% !important;  } }
 @media (max-width: 768px) { .container-xxl { width: 100% !important; } }
-@media (max-width: 576px) { .container-xxl { width: 100% !important; } }
+@media (max-width: 576px) { .container-xxl { width: 100% !important; } } */
 
 :root {
   --dark: #2B3940;
@@ -29,6 +31,7 @@
   position: static;
   
 }
+
 
 
 .dropdown-custom .dropdown-menu {
@@ -87,10 +90,7 @@
 .custom-dropdown-toggle::after {
   display: none !important; /* Hides the default arrow icon */
 }
-/* .custom-dropdown-toggle {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}*/
+
 .container-background {
   background-color: #f0f2f5; /* Light background color */
 }
@@ -205,38 +205,11 @@
   width: 31%;
 }
 
-/* .testimonial-carousel .testimonial-item i {
-  color: var(--primary);
-} */
-
-
-/* 
-.testimonial-carousel .testimonial-item .img-fluid {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-} */
-
-/* .testimonial-carousel .testimonial-item .ps-3 h5 {
-  font-size: 18px;
-  margin-bottom: 5px;
-} */
-
-/* .testimonial-carousel .testimonial-item .ps-3 small {
-  color: gray;
-} */
-
-/* .testimonial-carousel .carousel-indicators li {
-  background-color: var(--primary);
-} */
 
 .testimonial-carousel .carousel-indicators .active {
   background-color: var(--dark);
 }
 
-/* .testimonial-carousel .carousel-inner {
-  transition: transform 0.5s ease-in-out;
-} */
 
 .testimonial-carousel .carousel-item {
   text-align: center;
@@ -249,21 +222,7 @@
   justify-content: center;
 }
 
-/* .testimonial-carousel .owl-dot {
-  position: relative;
-  display: inline-block;
-  margin: 0 5px;
-  width: 15px;
-  height: 15px;
-  border: 5px solid var(--primary);
-  border-radius: 2px;
-  transition: 0.5s;
-} */
 
-/* .testimonial-carousel .owl-dot.active {
-  background-color: var(--dark);
-  border-color: var(--primary);
-} */
 .testimonial-carousel .carousel-item {
   display: flex;
   flex-direction: row;
@@ -319,3 +278,40 @@
   height: 80px; /* Adjusted size */
   object-fit: cover;
 }
+
+
+/* about section */
+.custom-green {
+  color: #00b074; /* Custom green color */
+
+}
+
+/* Optional: Remove default link styles */
+.custom-green a {
+  color: #00B074; /* Ensure the link color is green */
+  text-decoration: none; /* Remove underline */
+}
+
+.custom-green a:hover {
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  color: white !important; /* Color for the separator */
+}
+.custom-heading
+{
+  font-family: 'Inter', sans-serif; /* Replace with your desired font */
+    font-size: 64px; /* Adjust the size as needed */
+    margin-left: 35px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+.text-uppercase
+{
+  margin-left: 35px;
+}
+
+
+
+
+

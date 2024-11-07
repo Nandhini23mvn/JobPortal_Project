@@ -18,11 +18,11 @@
                 "title_1": "JOBS",
                 "items": [
                     {
-                        "to": "list",
+                        "to": "/list",
                         "label": "Job List"
                     },
                     {
-                        "to": "detail",
+                        "to": "/detail",
                         "label": "Job Detail"
                     }
                 ]

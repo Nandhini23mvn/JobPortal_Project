@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customgreen: '#00B074',
+        customgreen: '#00b074',
         dark: '#2B3940',
         lightgrey: '#666565', // Removed the extra semicolon
       },

@@ -1,16 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Row, Table, Modal } from "react-bootstrap";
+import { Button, Col, Container,  Table, Modal,Row,Card } from "react-bootstrap";
 import { Navbar, Nav, Image,  } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { faUserPlus, faUsersCog } from '@fortawesome/free-solid-svg-icons';
-import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons'; // Ensure this import is present
-import { faUser,faCaretDown } from '@fortawesome/free-solid-svg-icons'; // Ensure you import the icon correctly
+import {  faUser, faUserPlus, faUsersCog } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt,faAngleDown } from '@fortawesome/free-solid-svg-icons'; // Ensure this import is present
+import myImage from '../Data/img/com-logo-1.jpg'; // Adjust the path as necessary
+
+const cardData = [
+  {
+    variant: 'Primary',
+    title: 'Primary Card Title',
+    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+    buttonVariant: 'danger',
+  },
+  {
+    variant: 'Success',
+    title: 'Success Card Title',
+    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+    buttonVariant: 'primary',
+  },
+  {
+    variant: 'Warning',
+    title: 'Warning Card Title',
+    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+    buttonVariant: 'success',
+  },
+  {
+    variant: 'Info',
+    title: 'Info Card Title',
+    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+    buttonVariant: 'warning',
+  },
+];
 
 const AdminPanel = () => {
   const [activeButton, setActiveButton] = useState("dashboard");
   const [isEditing, setIsEditing] = useState(false);
   const [initialData, setInitialData] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -44,6 +72,12 @@ const AdminPanel = () => {
     setIsEditing(false);
     setInitialData(null);
     setError(null); // Reset error state when switching tabs
+    setIsExpanded(false); // Close menu on selection, if desired
+
+  };
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
 
   const handleChange = (e) => {
@@ -220,11 +254,13 @@ const AdminPanel = () => {
     setViewUser(null);
   };
 
+
+  
   return (
     <Container fluid className="p-0">
     <Navbar bg="white" expand="lg" style={{ height: '60px' }} className="sticky shadow p-0 w-100">
     <Navbar.Brand >
-        <h2 className="p-3" style={{ color: '#00B074' }}>Administration </h2>
+        <h2 className="p-3" style={{ color: '#00B074', fontFamily: 'Inter, sans-serif'  ,fontSize:'32px', fontWeight:'bold'}}>Administration </h2>
         </Navbar.Brand>
       
         {/* Navbar Content */}
@@ -248,47 +284,159 @@ const AdminPanel = () => {
         </Navbar.Collapse>
     </Navbar>
 
-    <Row>
-      <Col md={2} className="bg-dark sidebar" style={{ height: "100vh", padding: '1rem' }}>
-        <Button
-          variant={activeButton === "dashboard" ? "primary" : "secondary"}
-          onClick={() => handleButtonClick("dashboard")}
-          className="mb-4 text-white w-100"
-          style={{ backgroundColor: '#171b21' }}
+    <Row>  
+    <Col md={2} className="bg-dark sidebar" style={{ height: "100vh" }}>
+      <Button
+        variant={activeButton === "dashboard" }
+        onClick={() => handleButtonClick("dashboard")}
+        className="p-2 text-white w-100"
+        style={{
+          backgroundColor: '#19222E',
+          borderRadius: '0px',
+          justifyContent: 'flex-start',
+          textAlign: 'left'
+        }}
+      >
+        <FontAwesomeIcon icon={faTachometerAlt} className="me-2" />
+        Dashboard
+      </Button>
+
+      
+          
+    {/* {activeButton === "dashboard" && <h3>Dashboard Content</h3>}
+<>
+      {[
+        'Primary',          
+      ].map((variant) => (
+        <Card
+          bg={variant.toLowerCase()}
+          key={variant}
+          text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+          style={{ width: '18rem' }}
+          className="mb-4 mt-3"
         >
-          <FontAwesomeIcon icon={faTachometerAlt} className="me-2" />
-          Dashboard
-        </Button>
+        <Card.Img variant="top" src={myImage} />
+         <Card.Header>Header</Card.Header>
+          <Card.Body>
+            <Card.Title>{variant} Card Title </Card.Title>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+            <Button variant="danger">Go somewhere</Button>
+          </Card.Body>
+        </Card>
+      ))}
+    </> */}
 
-        <Dropdown className="w-100">
-          <Dropdown.Toggle variant="secondary" style={{ backgroundColor: '#171b21', color: 'white', width: '100%' }}>
-            User Management
-          </Dropdown.Toggle>
 
-          <Dropdown.Menu style={{ backgroundColor: '#171b21' }}>
-            <Dropdown.Item
-              eventKey="1"
+          <Col >
+    <div className="sidenav-item w-100">
+    <button
+      className="sidenav-link ripple-surface-primary d-flex justify-content-start align-items-center"
+      onClick={toggleExpand}
+      style={{
+        backgroundColor: '#19222E',
+        color: 'white',
+        width: '100%',
+        cursor: 'pointer',
+        padding: '0.75rem',
+        borderRadius: '0px',
+      }}
+    >
+      <FontAwesomeIcon icon={faUser} className="me-2" />
+      User Management
+      <FontAwesomeIcon
+        icon={faAngleDown}
+        className={`ml-auto rotate-icon ${isExpanded ? 'rotate-180' : ''}`}
+        style={{
+          transition: 'transform 0.3s',
+          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+        }}
+      />
+    </button>
+
+      {isExpanded && (
+        <ul className="sidenav-collapse" style={{ listStyleType: 'none', padding: 0, margin: '0.5rem 0' }}>
+          <li className="sidenav-item">
+            <button
               onClick={() => handleButtonClick("addUser")}
-              active={activeButton === "addUser"}
-              style={{ color: 'white' }}
+              className={`sidenav-link ripple-surface ${activeButton === "addUser" ? 'active' : ''}`}
+              style={{
+                backgroundColor: '#171b21',
+                color: 'white',
+                display: 'flex',
+                // alignItems: 'center',
+                padding: '0.5rem 1rem ',
+                cursor: 'pointer',
+                borderRadius: '0px',
+                width: '100%',
+                // textAlign: 'left' // Ensure text is left-aligned
+
+
+              }}
             >
               <FontAwesomeIcon icon={faUserPlus} className="me-2" />
               Add User
-            </Dropdown.Item>
-            <Dropdown.Item
-              eventKey="2"
+            </button>
+          </li>
+          <li className="sidenav-item">
+            <button
               onClick={() => handleButtonClick("manageUser")}
-              active={activeButton === "manageUser"}
-              style={{ color: 'white' }}
+              className={`sidenav-link ripple-surface ${activeButton === "manageUser" ? 'active' : ''}`}
+              style={{
+                backgroundColor: '#171b21',
+                color: 'white',
+                display: 'flex',
+                width: '100%',
+                // alignItems: 'center',
+                padding: '0.5rem 1rem',
+                cursor: 'pointer',
+                // borderRadius: '5px'
+              }}
             >
               <FontAwesomeIcon icon={faUsersCog} className="me-2" />
               Manage Users
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Col>
-   
-        <Col md={9}>
+            </button>
+          </li>
+        </ul>
+      )}
+    </div>
+</Col>
+</Col>
+ 
+        <Col md={6} className="dashboard-content">
+        {/* Render Dashboard Content Conditionally */}
+        {activeButton === "dashboard" && (
+          <div className="mt-1 p-3 ">
+            <h3>Dashboard Content</h3>
+            <p>Here you can manage your tasks and view statistics.</p>
+            {/* Grid for Cards */}
+            <Row>
+              {cardData.map((card) => (
+                <Col md={3} key={card.variant} className="mb-5"> {/* Adjust the width as needed */}
+                  <Card
+                    bg={card.variant.toLowerCase()}
+                    text={card.variant.toLowerCase() === 'light' ? 'dark' : 'white'} style={{ width: '10rem' }}
+                    className="h-100" // Ensure cards take the full height of the column
+                  >
+                    <Card.Img variant="top" src={myImage} />
+                    <Card.Header>{card.variant} Header</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{card.title}</Card.Title>
+                      <Card.Text>{card.text}</Card.Text>
+                      <Button variant={card.buttonVariant}>Go somewhere</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        )}
+     
+
+    
+        
           {activeButton === "addUser" && (
             <form onSubmit={handleSubmit}>
               <h3>Add User</h3>
@@ -465,7 +613,7 @@ const AdminPanel = () => {
             </>
           )}
         </Col>
-      </Row>
+        </Row>
 
       {/* Modal for viewing user details */}
       <Modal show={showModal} onHide={handleCloseModal}>

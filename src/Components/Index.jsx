@@ -189,7 +189,7 @@ const CarouselFadeExample = () => {
   };
 
   return (
-    <Container className="container-xxl p-0 header-carousel">
+    <Container className="container-xxl p-0 header-carousel ">
       <Carousel fade interval={5000} controls={true} indicators={false}>
         {Object.keys(carouselData).map((key) => {
           const item = carouselData[key];
@@ -208,7 +208,7 @@ const CarouselFadeExample = () => {
                 style={{ background: "rgba(24, 29, 56, 0.7)" }}
               >
                 <div className="box"> {/* Apply the box class here */}
-                  <Container className='container-xxl p-5 p-0'>
+                  <Container className='container-xl p-5 p-0'>
                     <Row className="justify-content-start">
                       <Col xs={12} md={10} lg={8}>
                         <div className="text-white">
@@ -243,12 +243,12 @@ const CarouselFadeExample = () => {
  
 
 
-{/* /* carousel start */}
+{/* /* carousel end */}
 
 
 {/* Search Bar after Carousel */}
        
-     <Container className='container p-4  bg-customgreen'>
+     <Container className='container p-4  bg-customgreen '>
         <Row className="g-2">
            <Col md={10}>
             <Row className="g-2">
@@ -323,7 +323,7 @@ const JobCategories = () => {
   const categories = jobData.jobcategories;
 
   return (
-    <Container fluid className=" container-xxl py-5 shadow ">
+    <Container fluid className=" container-xxl py-5  ">
       <Container>
         <h1 className="text-center mb-5 font-inter font-40xl font-bold text-dark">Explore By Category</h1>
         <Row className="g-4">
@@ -351,7 +351,7 @@ const AboutSection = () => {
   const images = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
  
   return (
-    <Container fluid className="py-5 container-xxl shadow  ">
+    <Container fluid className="py-5 container-xxl ">
       <Container>
         <Row className="g-5 align-items-center ">
           <Col lg={6} className="wow fadeIn">
@@ -398,7 +398,7 @@ const JobsListing = () => {
   const { featuredJobs, fullTimeJobs, partTimeJobs } = jobData;
 
   return (
-    <Container className=" py-5 container-xxl shadow" fluid >
+    <Container className=" py-5 container-xxl " fluid >
       <h1 className="text-center mb-5 font-inter font-40xl font-bold text-dark">Job Listing</h1>
       
       <Tabs defaultActiveKey="tab-1" className="justify-content-center mb-5 font-15xl font-hebbo font-bold text-custom-dark !important">
@@ -481,44 +481,6 @@ const JobItem = ({ title, company, location, type, salary, deadline, img }) => (
 // {job---ended}
 
 
-// const TestimonialCarousel = () => {
-//   const [testimonials, setTestimonials] = useState([]);
-
-//   useEffect(() => {
-//     setTestimonials(jobData.testimonial);
-//   }, []);
-
-//   return (
-//     <div className='container-xxl p-0'>
-//         <div className="testimonial-carousel ">
-//       <Carousel>
-//         {testimonials.map((testimonial, index) => (
-//           <Carousel.Item key={index}>
-//             <div className="testimonial-item bg-light rounded p-4">
-//               <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
-//               <p>{testimonial.quote}</p>
-//               <div className="d-flex align-items-center">
-//                 <img
-//                   className="img-fluid flex-shrink-0 rounded"
-//                   src={testimonial.image}
-//                   alt={testimonial.name}
-//                   style={{ width: '50px', height: '50px' }}
-//                 />
-//                 <div className="ps-3">
-//                   <h5 className="mb-1">{testimonial.name}</h5>
-//                   <small>{testimonial.profession}</small>
-//                 </div>
-//               </div>
-//             </div>
-//           </Carousel.Item>
-//         ))}
-//       </Carousel>
-//     </div>
-//     </div>
-  
-    
-//   );
-// };
 
 const TestimonialCarousel = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -528,7 +490,7 @@ const TestimonialCarousel = () => {
   }, []);
 
   return (
-    <div className="container-xxl py-5 shadow">
+    <div className="container-xxl py-5 bg-colour ">
       <div className="container">
         <h1 className="text-center mb-5">Our Clients Say!!!</h1>
         <Carousel className="testimonial-carousel" indicators>
@@ -562,7 +524,7 @@ const TestimonialCarousel = () => {
 
 const Footer = () => {
   return (
-        <div className="container-xxl  bg-dark text-white-50 footer  mt-5">
+        <div className="container-xxl  bg-dark text-white-50 footer  pt-5 ">
 
 <Row className="g-5 ">
       {/* Company Section */}
