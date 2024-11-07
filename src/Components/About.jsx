@@ -173,7 +173,7 @@ const AboutSection = () => {
   const images = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
  
   return (
-    <Container fluid className="py-5 container-xxl  ">
+    <Container fluid className=" container-xxl  ">
       <Container>
         <Row className="g-5 align-items-center ">
           <Col lg={6} className="wow fadeIn">
@@ -384,12 +384,14 @@ const Footer = () => {
 
 const MainComponent = () => {
   return (
-    <>
-      <NavbarComponent />
-
-        <About/>
-        <AboutSection/>
-      <Footer/>
+    <> 
+    <div className="main-container">
+    <NavbarComponent />
+    <About/>
+    <AboutSection/>
+    <Footer/>
+    </div>
+     
     </>
   );
 };

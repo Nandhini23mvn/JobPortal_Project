@@ -16,7 +16,6 @@ import carouselImage from '../Data/img/carousel-1.jpg';
 
 
 
-
 const NavbarComponent = () => {
   const config = jobData.user[0];
   const [showDropdown, setShowDropdown] = useState(false);
@@ -173,7 +172,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 page-header mb-5 position-relative"
+      className="py-5 page-header  position-relative"
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -377,11 +376,13 @@ const Footer = () => {
 const MainComponent = () => {
   return (
     <>
-      <NavbarComponent />
-
-        <About/>
-      <JobCategories/>
-      <Footer/>
+    <div className="main-container">
+    <NavbarComponent />
+    <About/>
+    <JobCategories/>
+    <Footer/>
+    </div>
+      
     </>
   );
 };

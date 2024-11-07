@@ -170,7 +170,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 page-header mb-5 position-relative"
+      className="py-5 container-xxl page-header mb-5 position-relative"
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -422,11 +422,13 @@ const Footer = () => {
 const MainComponent = () => {
   return (
     <>
+    <div className=' main-container'>
       <NavbarComponent />
-   
-<About/>
+      <About/>
       <JobsListing/>
       <Footer/>
+    </div>
+     
     </>
   );
 };

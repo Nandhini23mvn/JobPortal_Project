@@ -651,13 +651,16 @@ const Footer = () => {
 const MainComponent = () => {
   return (
     <>
-      <NavbarComponent />
+    <div className="main-container">
+    <NavbarComponent />
       <CarouselFadeExample />
       <JobCategories />
       <AboutSection/>
       <JobsListing/>
       <TestimonialCarousel/>
       <Footer/>
+    </div>
+      
     </>
   );
 };

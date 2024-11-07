@@ -175,7 +175,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 page-header mb-5 position-relative"
+      className="py-5 page-header container-xxl  position-relative"
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -206,9 +206,9 @@ const About = ({ jobData = {} }) => {
 // {Jobs Start}
 const ContactSection = () => {
     return (
-      <Container fluid className="py-5">
+      <Container fluid className="py-5 container-xxl">
         <Container>
-          <h1 className="text-center mb-5">Contact For Any Query</h1>
+          <h1 className="text-center  mb-5">Contact For Any Query</h1>
           <Row className="g-4">
             <Col xs={12}>
               <Row className="gy-4">
@@ -439,11 +439,13 @@ const Footer = () => {
 const MainComponent = () => {
   return (
     <>
-      <NavbarComponent />
-
-        <About/>
-        <ContactSection/>
-      <Footer/>
+    <div className="main-container">
+         <NavbarComponent />
+         <About/>
+         <ContactSection/>
+         <Footer/>
+    </div>
+     
     </>
   );
 };

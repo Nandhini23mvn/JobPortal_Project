@@ -35,6 +35,7 @@ const NavbarComponent = () => {
   if (!config) return null;
 
   return (
+  
     <Container fluid className=" sticky-top container-xxl   p-0">
     {/* <Navbar bg="white" expand="lg" className="shadow sticky-top p-0  w-100 align-items-center navbar-custom-padding"> */}
     <Navbar 
@@ -174,7 +175,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 page-header mb-5 position-relative "
+      className="py-5 container-xxl page-header pb-4 position-relative "
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -206,7 +207,7 @@ const About = ({ jobData = {} }) => {
 
 const NotFoundPage = () => {
     return (
-        <Container className="text-center">
+        <Container className="container-xxl pt-5 text-center">
         <Row className="justify-content-center pb-5 mb-5">
           <Col lg={6}>
           <div className="d-flex justify-content-center p-3">
@@ -359,13 +360,12 @@ const Footer = () => {
 
 const MainComponent = () => {
   return (
-    <>
+    <div className="main-container">
       <NavbarComponent />
-
-        <About/>
-        <NotFoundPage/>
-      <Footer/>
-    </>
+      <About />
+      <NotFoundPage />
+      <Footer />
+    </div>
   );
 };
 

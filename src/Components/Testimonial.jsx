@@ -336,10 +336,12 @@ const Footer = () => {
 const MainComponent = () => {
   return (
     <>
-      <NavbarComponent />
-
-        <About/>
-      <Footer/>
+    <div className='main-container'>
+    <NavbarComponent />
+    <About/>
+    <Footer/>
+    </div>
+      
     </>
   );
 };

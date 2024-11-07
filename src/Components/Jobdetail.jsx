@@ -203,7 +203,7 @@ const Job = ({ jobData = {} }) => {
 
 const JobDetail = () => {
     return (
-        <Container>
+        <Container className='container-xxl'>
                 <Row className="gy-5 gx-4">
         <Col lg={8}>
           <div className="d-flex align-items-center mb-5">
@@ -505,11 +505,13 @@ const Footer = () => {
 const MainComponent = () => {
   return (
     <>
-      <NavbarComponent />
-   
-<Job/>
+    <div className='main-container'>
+    <NavbarComponent />
+      <Job/>
       <JobDetail/>
       <Footer/>
+   
+    </div>
     </>
   );
 };
