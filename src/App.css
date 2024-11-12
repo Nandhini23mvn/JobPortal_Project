@@ -322,3 +322,31 @@
 {
   background-color: white;
 }
+
+
+
+/* Allow multiple items per slide */
+.carousel-item .text-center {
+  min-width: 200px; /* Adjust as needed */
+}
+
+@media (max-width: 1200px) {
+  .carousel-item .text-center {
+      min-width: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .carousel-item .text-center {
+      min-width: 100%;
+  }
+}
+.carousel-indicators li {
+  width: 10px;   /* Width of the square */
+  height: 10px;  /* Height of the square */
+  border-radius: 0%;  /* Make the shape square (no rounding) */
+  background-color: #888;  /* Default inactive indicator color */
+}
+
+.carousel-indicators .active {
+  background-color: #007bff;  /* Color of the active indicator */
+}
