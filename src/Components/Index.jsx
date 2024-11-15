@@ -9,6 +9,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Navbar, Nav, NavDropdown, Dropdown, Container, Button ,Carousel,  Row, Col , Form} from 'react-bootstrap';
 import { faMailBulk, faHeadset, faUserTie, faTasks, faChartLine, faHandsHelping, faBookReader, faDraftingCompass } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { faMapMarkerAlt, faClock, faMoneyBillAlt, faCalendarAlt, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Tab, Tabs,  Image } from 'react-bootstrap';
@@ -488,33 +489,52 @@ const TestimonialCarousel = () => {
   useEffect(() => {
     setTestimonials(jobData.testimonial);
   }, []);
+  const chunks = [];
+  for (let i = 0; i < testimonials.length; i += 3) {
+      chunks.push(testimonials.slice(i, i + 3));
+  }
 
   return (
-    <div className="container-xxl py-5 bg-colour ">
-      <div className="container">
-        <h1 className="text-center mb-5">Our Clients Say!!!</h1>
-        <Carousel className="testimonial-carousel" indicators>
-          {testimonials.map((testimonial, index) => (
-            <Carousel.Item key={index} className="testimonial-item d-flex flex-column bg-light rounded p-4">
-              <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
-              <p className="">{testimonial.quote}</p>
-              <div className="d-flex align-items-center">
-                <img
-                  className="img-fluid flex-shrink-0 rounded"
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  style={{ width: '50px', height: '50px' }}
+    <Container fluid="xxl pb-5">
+  <h1 className="text-center pt-5 font-inter font-40xl font-bold text-dark">Our Clients Say!!!</h1>
+
+  <Carousel interval={3000} indicators controls={false} className="pb-5 pt-5 custom-carousel">
+    {/* Map through the chunks and render them in separate carousel items */}
+    {chunks.map((chunk, index) => (
+      <Carousel.Item key={index}>
+        <Row className="g-4">
+          {chunk.map((testimonial) => (
+            <Col key={testimonial.id} md={4}>    
+
+                         <div
+                key={testimonial.id}
+                className={`testimonial-item p-4 ${[2, 5, 8, 11].includes(testimonial.id) ? 'bg-customgreen text-white' : 'bg-lightblue'}`}
+              >
+                <FontAwesomeIcon 
+                  icon={faQuoteLeft} 
+                  className={`fa-2x ${[2, 5, 8, 11].includes(testimonial.id) ? 'text-white' : 'text-customgreen'} mb-3`} 
                 />
-                <div className="ps-3">
-                  <h5 className="mb-1">{testimonial.name}</h5>
-                  <small>{testimonial.profession}</small>
+                <p>{testimonial.text}</p>
+                <div className="d-flex align-items-center mt-3">
+                  <img
+                    src={testimonial.img}
+                    alt={testimonial.name}
+                    className="img-fluid flex-shrink-0 rounded"
+                    style={{ width: '50px', height: '50px' }}
+                  />
+                  <div className="ps-3">
+                    <h5 className="mb-1">{testimonial.name}</h5>
+                    <small>{testimonial.profession}</small>
+                  </div>
                 </div>
               </div>
-            </Carousel.Item>
+            </Col>
           ))}
-        </Carousel>
-      </div>
-    </div>
+        </Row>
+      </Carousel.Item>
+    ))}
+  </Carousel>
+</Container>
   );
 };
 

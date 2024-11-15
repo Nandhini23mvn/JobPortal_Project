@@ -6,7 +6,8 @@ module.exports = {
       colors: {
         customgreen: '#00b074',
         dark: '#2B3940',
-        lightgrey: '#666565', // Removed the extra semicolon
+        lightgrey: '#666565',
+        lightblue: '#EFFDF5' // Removed the extra semicolon
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],

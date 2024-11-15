@@ -361,29 +361,91 @@
         }
     ],
    "testimonial": [
-   
     {
-        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
-        "name": "Client Name",
-        "profession": "Profession ",
-        "image": "images/testimonial-1.jpg"
-      },
-      {
-        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
-        "name": "Client Name",
-        "profession": "Profession ",
-        "image": "images/testimonial-2.jpg"
-      },{
-        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
-        "name": "Client Name",
-        "profession": "Profession ",
-        "image": "images/testimonial-3.jpg"
-      },{
-        "quote": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
-        "name": "Client Name",
-        "profession": "Profession ",
-        "image": "images/testimonial-4.jpg"
-      },
+      "id": 1,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-1.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 2,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-2.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 3,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-3.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 4,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-1.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 5,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-2.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 6,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-3.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 7,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-1.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 8,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-2.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 9,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "timages//testimonial-3.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 10,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-1.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 11,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "timages//testimonial-2.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+    {
+      "id": 12,
+      "text": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "img": "images//testimonial-3.jpg",
+      "name": "Client Name ",
+      "profession": "Profession "
+    },
+  
       {
         "footer": {
           "companyLinks": [

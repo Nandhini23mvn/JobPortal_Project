@@ -340,13 +340,24 @@
       min-width: 100%;
   }
 }
-.carousel-indicators li {
-  width: 10px;   /* Width of the square */
-  height: 10px;  /* Height of the square */
-  border-radius: 0%;  /* Make the shape square (no rounding) */
-  background-color: #888;  /* Default inactive indicator color */
+
+
+/* Default (inactive) indicator styling */
+.custom-carousel .carousel-indicators [data-bs-target] {
+  width: 4px !important;       /* Box width */
+  height: 4px !important;      /* Box height */
+  background-color: #ffffff !important; /* Active color: white */
+
+  border: 4px solid #00B074 !important; /* Green border for active indicator */
+  border-radius: 0 !important; /* Square corners */
 }
 
-.carousel-indicators .active {
-  background-color: #007bff;  /* Color of the active indicator */
+/* Active indicator styling */
+.custom-carousel .carousel-indicators .active {
+  width: 14px !important;       /* Box width */
+  height: 14px !important;      /* Box height */
+  background-color:#000 !important; /* Active color: white */
+  border: 4px solid #00B074 !important; /* Green border for active indicator */
+  border-radius: 0 !important; /* Square corners */
+  box-sizing: border-box;       /* Ensures the border doesn't affect box sizing */
 }

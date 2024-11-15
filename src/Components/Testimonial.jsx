@@ -178,7 +178,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 page-header mb-5 position-relative"
+      className="py-5 page-header  position-relative"
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -206,141 +206,91 @@ const About = ({ jobData = {} }) => {
   );
 };
 
-// {Jobs Start}
 
-
-
-// const items = [
-//   { id: 1, content: "Image 1", image: require("../Data/img/testimonial-1.jpg") },
-//   { id: 2, content: "Image 2", image: require("../Data/img/testimonial-2.jpg") },
-//   { id: 3, content: "Image 3", image: require("../Data/img/testimonial-3.jpg") },
-//   { id: 4, content: "Image 4", image: require("../Data/img/testimonial-1.jpg") },
-//   { id: 5, content: "Image 5", image: require("../Data/img/testimonial-2.jpg") },
-//   { id: 6, content: "Image 6", image: require("../Data/img/testimonial-3.jpg") },
-//   { id: 7, content: "Image 4", image: require("../Data/img/testimonial-1.jpg") },
-//   { id: 8, content: "Image 5", image: require("../Data/img/testimonial-2.jpg") },
-//   { id: 9, content: "Image 6", image: require("../Data/img/testimonial-3.jpg") },
-//   { id: 10, content: "Image 4", image: require("../Data/img/testimonial-1.jpg") },
-//   { id: 11, content: "Image 5", image: require("../Data/img/testimonial-2.jpg") },
-//   { id: 12, content: "Image 6", image: require("../Data/img/testimonial-3.jpg") },
-// ];
-
-// function MultiImageCarousel() {
-//   const itemsPerSlide = 3;
-//   const slides = [];
-
-//   // Group images into slides of 4 items each
-//   for (let i = 0; i < items.length; i += itemsPerSlide) {
-//       slides.push(items.slice(i, i + itemsPerSlide));
-//   }
-
-//   return (
-//       <Container fluid="xxl">
-//           <Carousel interval={3000} controls indicators slide>
-//               {slides.map((slide, index) => (
-//                   <Carousel.Item key={index}>
-//                       <div className="d-flex justify-content-center gap-3">
-//                           {slide.map((item) => (
-//                               <div key={item.id} className="text-center" style={{ flex: 1 }}>
-//                                   <img
-//                                       src={item.image}
-//                                       alt={item.content}
-//                                       style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-//                                   />
-                                 
-//                               </div>
-//                           ))}
-//                       </div>
-//                   </Carousel.Item>
-//               ))}
-//           </Carousel>
-//       </Container>
-//   );
-// }
 const testimonials = [
   {
       id: 1,
       text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
       img: testimonialImg1,
-      name: "Client Name 1",
-      profession: "Profession 1"
+      name: "Client Name ",
+      profession: "Profession "
   },
   {
       id: 2,
       text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
       img: testimonialImg2,
-      name: "Client Name 2",
-      profession: "Profession 2"
+      name: "Client Name ",
+      profession: "Profession "
   },
   {
       id: 3,
       text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
       img: testimonialImg3,
-      name: "Client Name 3",
-      profession: "Profession 3"
+      name: "Client Name ",
+      profession: "Profession "
   },
   {
       id: 4,
       text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
       img: testimonialImg1,
-      name: "Client Name 4",
-      profession: "Profession 4"
+      name: "Client Name ",
+      profession: "Profession "
   },
   {
       id: 5,
       text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
       img: testimonialImg2,
-      name: "Client Name 5",
-      profession: "Profession 5"
+      name: "Client Name ",
+      profession: "Profession "
   },
   {
       id: 6,
       text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
       img: testimonialImg3,
-      name: "Client Name 6",
-      profession: "Profession 6"
+      name: "Client Name ",
+      profession: "Profession "
   },
   {
     id: 7,
     text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
     img: testimonialImg2,
-    name: "Client Name 5",
-    profession: "Profession 5"
+    name: "Client Name ",
+    profession: "Profession "
 },
 {
     id: 8,
     text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
     img: testimonialImg3,
-    name: "Client Name 6",
-    profession: "Profession 6"
+    name: "Client Name ",
+    profession: "Profession "
 },
 {
   id: 9,
   text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
   img: testimonialImg2,
-  name: "Client Name 5",
-  profession: "Profession 5"
+  name: "Client Name ",
+  profession: "Profession "
 },
 {
   id: 10,
   text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
   img: testimonialImg3,
-  name: "Client Name 6",
-  profession: "Profession 6"
+  name: "Client Name  ",
+  profession: "Profession "
 },
 {
   id: 11,
   text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
   img: testimonialImg2,
-  name: "Client Name 5",
-  profession: "Profession 5"
+  name: "Client Name ",
+  profession: "Profession "
 },
 {
   id: 12,
   text: "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
   img: testimonialImg3,
-  name: "Client Name 6",
-  profession: "Profession 6"
+  name: "Client Name ",
+  profession: "Profession "
 }
 ];
 
@@ -352,37 +302,47 @@ function TestimonialCarousel() {
   }
 
   return (
-    <Container fluid="xxl pb-5 pt-2">
-    <Carousel interval={3000} controls indicators>
-        {/* Map through the chunks and render them in separate carousel items */}
-        {chunks.map((chunk, index) => (
-            <Carousel.Item key={index}>
-                <Row className="g-4">
-                    {chunk.map((testimonial) => (
-                        <Col key={testimonial.id} md={4}>
-                            <div className="testimonial-item bg-light rounded p-4">
-                                <FontAwesomeIcon icon={faQuoteLeft} className="fa-2x text-primary mb-3" />
-                                <p>{testimonial.text}</p>
-                                <div className="d-flex align-items-center mt-3">
-                                    <img
-                                        src={testimonial.img}
-                                        alt={testimonial.name}
-                                        className="img-fluid flex-shrink-0 rounded"
-                                        style={{ width: '50px', height: '50px' }}
-                                    />
-                                    <div className="ps-3">
-                                        <h5 className="mb-1">{testimonial.name}</h5>
-                                        <small>{testimonial.profession}</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                    ))}
-                </Row>
-            </Carousel.Item>
-        ))}
-    </Carousel>
+<Container fluid="xxl pb-5">
+  <h1 className="text-center pt-5 font-inter font-40xl font-bold text-dark">Our Clients Say!!!</h1>
+
+  <Carousel interval={3000} indicators controls={false} className="pb-5 pt-5 custom-carousel">
+    {/* Map through the chunks and render them in separate carousel items */}
+    {chunks.map((chunk, index) => (
+      <Carousel.Item key={index}>
+        <Row className="g-4">
+          {chunk.map((testimonial) => (
+            <Col key={testimonial.id} md={4}>    
+
+                         <div
+                key={testimonial.id}
+                className={`testimonial-item p-4 ${[2, 5, 8, 11].includes(testimonial.id) ? 'bg-customgreen text-white' : 'bg-lightblue'}`}
+              >
+                <FontAwesomeIcon 
+                  icon={faQuoteLeft} 
+                  className={`fa-2x ${[2, 5, 8, 11].includes(testimonial.id) ? 'text-white' : 'text-customgreen'} mb-3`} 
+                />
+                <p>{testimonial.text}</p>
+                <div className="d-flex align-items-center mt-3">
+                  <img
+                    src={testimonial.img}
+                    alt={testimonial.name}
+                    className="img-fluid flex-shrink-0 rounded"
+                    style={{ width: '50px', height: '50px' }}
+                  />
+                  <div className="ps-3">
+                    <h5 className="mb-1">{testimonial.name}</h5>
+                    <small>{testimonial.profession}</small>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Carousel.Item>
+    ))}
+  </Carousel>
 </Container>
+         
   );
 }
 
@@ -427,13 +387,13 @@ const Footer = () => {
       {/* Quick Links Section */}
       <Col lg={3} md={6}>
         <h5 className="text-white mb-4">Quick Links</h5>
-        <Row>
-        <Col className="d-flex align-items-center">
-  <Button variant="link" className="text-white-50 text-decoration-none" href="/about-us">
-    <FaAngleRight className="me-2" /> About Us
-  </Button>
-</Col>
-      </Row>
+        <Row className="d-flex align-items-center">
+  <Col>
+  <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+  <FaAngleRight className="me-2" /> About Us
+</Button>
+  </Col>
+</Row>
       <Row>
         <Col>
           <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
