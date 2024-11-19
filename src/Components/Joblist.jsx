@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import {  faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
+import {  faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FaAngleRight } from 'react-icons/fa'; // Import the icon
+import {  FaPhoneAlt } from 'react-icons/fa';
 import { faTwitter, faFacebookF, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -293,6 +294,7 @@ const JobItem = ({ title, company, location, type, salary, deadline, img }) => (
 // Footer---start
 
 
+
 const Footer = () => {
   return (
         <div className="container-xxl  bg-dark text-white-50 footer  mt-5">
@@ -303,27 +305,33 @@ const Footer = () => {
         <h5 className="text-white mb-4">Company</h5>
         <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/about-us"> About Us</Button>
+  <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+  <FaAngleRight className="me-2" /> About Us
+</Button>
+  </Col>
+</Row>
+      <Row>
+        <Col>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Contact Us</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Our Services</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Privacy Policy</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Terms & Condition</Button>
         </Col>
       </Row>
       </Col>
@@ -331,55 +339,69 @@ const Footer = () => {
       {/* Quick Links Section */}
       <Col lg={3} md={6}>
         <h5 className="text-white mb-4">Quick Links</h5>
-        <Row>
+        <Row className="d-flex align-items-center">
+  <Col>
+  <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+  <FaAngleRight className="me-2" /> About Us
+</Button>
+  </Col>
+</Row>
+      <Row>
         <Col>
-          <Button variant="link" className="text-white-50 " href="/about-us">About Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Contact Us</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Our Services</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Privacy Policy</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Terms & Condition</Button>
         </Col>
       </Row>
       </Col>
       
       {/* Contact Section */}
       <Col lg={3} md={6}>
-        <h5 className="text-white mb-4">Contact</h5>
-        <p className="mb-2"><FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />123 Street, New York, USA</p>
-        <p className="mb-2"><FontAwesomeIcon icon={faPhoneAlt} className="me-3" />+012 345 67890</p>
-        <p className="mb-2"><FontAwesomeIcon icon={faEnvelope} className="me-3" />info@example.com</p>
-        <div className="d-flex pt-2">
-          <Button variant="outline-light" className="btn-social" href="https://twitter.com">
-            <FontAwesomeIcon icon={faTwitter} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://facebook.com">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://youtube.com">
-            <FontAwesomeIcon icon={faYoutube} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </Button>
-        </div>
-      </Col>
-      
+            <h5 className="text-white mb-4">Contact</h5>
+            <p className="mb-2">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />
+              123 Street, New York, USA
+            </p>
+            <p className="mb-2 d-inline-flex align-items-center">
+              <FaPhoneAlt className="me-3" />
+              +012 345 67890
+            </p>
+            <p className="mb-2">
+              <FontAwesomeIcon icon={faEnvelope} className="me-3" />
+              info@example.com
+            </p>
+            <div className="d-flex pt-2">
+              <Button variant="outline-light" className="btn-social" href="https://twitter.com">
+                <FontAwesomeIcon icon={faTwitter} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://facebook.com">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://youtube.com">
+                <FontAwesomeIcon icon={faYoutube} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </Button>
+            </div>
+          </Col>
       {/* Newsletter Section */}
       <Col lg={3} md={6}>
         <h5 className="text-white mb-4">Newsletter</h5>
@@ -417,8 +439,6 @@ const Footer = () => {
    </div>
   );
 };
-
-
 const MainComponent = () => {
   return (
     <>

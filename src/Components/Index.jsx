@@ -1,8 +1,9 @@
 import React, { useState,useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import {  faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
+import {   faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FaAngleRight } from 'react-icons/fa'; // Import the icon
+import {  FaPhoneAlt } from 'react-icons/fa';
 import { faTwitter, faFacebookF, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -190,70 +191,66 @@ const CarouselFadeExample = () => {
   };
 
   return (
-    <Container className="container-xxl p-0 header-carousel ">
-      <Carousel fade interval={5000} controls={true} indicators={false}>
-        {Object.keys(carouselData).map((key) => {
-          const item = carouselData[key];
-          const jobIndex = Number(key) - 1; // Convert key to number
-          const job = jobData.jobs[jobIndex];
+    <Container className="container-xxl p-0 header-carousel">
+  {/* Carousel Component */}
+  <Carousel fade interval={5000} controls={true} indicators={false}>
+    {Object.keys(carouselData).map((key) => {
+      const item = carouselData[key];
+      const jobIndex = Number(key) - 1; // Convert key to number
+      const job = jobData.jobs[jobIndex];
 
-          return (
-            <Carousel.Item key={key}>
-              <img
-                className="d-block w-100"
-                src={imageMap[item.image]} // Ensure imageMap is defined
-                alt={`Slide ${key}`}
-              />
-              <div
-                className="position-absolute top-0 start-0 d-flex w-100 h-100 align-items-center"
-                style={{ background: "rgba(24, 29, 56, 0.7)" }}
-              >
-                <div className="box"> {/* Apply the box class here */}
-                  <Container className='container-xl p-5 p-0'>
-                    <Row className="justify-content-start">
-                      <Col xs={12} md={10} lg={8}>
-                        <div className="text-white">
-                          <h1 className="header-3 font-inter font-40xl font-bold font-64px mb-4">
-                            {item.heading}
-                          </h1>
-                          <p className="fs-5 mb-4">
-                            {job?.description} {/* Display job description */}
-                          </p>
-                          <div className="d-flex flex-column flex-md-row">
-                            {item.buttons.map((btn, index) => (
-                              <a
-                                key={index}
-                                href={btn.link}
-                                className={`btn ${index === 0 ? 'btn-customgreen !bg-customgreen' : 'btn-primary'} text-white !font-inter font-16xl !font-bold py-md-3 px-md-5 mb-2 mb-md-0 me-md-3`} 
-                                style={{ borderRadius: "2px" }}
-                              >
-                                {btn.label}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </div>
-              </div>
-            </Carousel.Item>
-          );
-        })}
-      </Carousel>
- 
+      return (
+        <Carousel.Item key={key}>
+          <img
+            className="d-block w-100" 
+            src={imageMap[item.image]} // Ensure imageMap is defined
+            alt={`Slide ${key}`}
+            style={{ objectFit: 'cover', height: '100vh' }} // Ensure full-height image scaling
+          />
+          <div
+            className="position-absolute top-0 start-0 d-flex w-100 h-100 align-items-center"
+            style={{ background: "rgba(24, 29, 56, 0.7)" }}
+          >
+            <div className="box">
+              <Container className="container-xl p-5 p-0">
+                <Row className="justify-content-start">
+                  <Col xs={12} md={10} lg={8}>
+                    <div className="text-white">
+                      <h1 className="header-3 font-inter font-bold mb-4 text-center text-md-start">
+                        {item.heading}
+                      </h1>
+                      <p className="fs-5 mb-4 text-center text-md-start">
+                        {job?.description} {/* Display job description */}
+                      </p>
+                      <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start">
+                        {item.buttons.map((btn, index) => (
+                          <a
+                            key={index}
+                            href={btn.link}
+                            className={`btn ${index === 0 ? 'btn-customgreen !bg-customgreen' : 'btn-primary'} text-white font-inter font-bold py-md-3 px-md-5 mb-2 mb-md-0 me-md-3`}
+                            style={{ borderRadius: "2px" }}
+                          >
+                            {btn.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+          </div>
+        </Carousel.Item>
+      );
+    })}
+  </Carousel>
 
-
-{/* /* carousel end */}
-
-
-{/* Search Bar after Carousel */}
-       
-     <Container className='container p-4  bg-customgreen '>
+      {/* Search Bar after Carousel */}
+      <Container className='container p-4  bg-customgreen'>
         <Row className="g-2">
-           <Col md={10}>
+          <Col md={10}>
             <Row className="g-2">
-               <Col md={4}>
+              <Col md={4}>
                 <Form.Control
                   type="text"
                   placeholder="Keyword"
@@ -299,10 +296,11 @@ const CarouselFadeExample = () => {
           </Col>
         </Row>
       </Container>
-
     </Container>
   );
 };
+
+
 // {/* Search Bar after Carousel ended */}
 
 
@@ -493,58 +491,60 @@ const TestimonialCarousel = () => {
   for (let i = 0; i < testimonials.length; i += 3) {
       chunks.push(testimonials.slice(i, i + 3));
   }
-
+  const maxIndicators = 4;
+  const totalSlides = Math.min(chunks.length, maxIndicators);
   return (
-    <Container fluid="xxl pb-5">
-  <h1 className="text-center pt-5 font-inter font-40xl font-bold text-dark">Our Clients Say!!!</h1>
+    <Container fluid="xxl" className="pb-5">
+      <h1 className="text-center pt-5 font-inter font-40xl font-bold text-dark">
+        Our Clients Say!!!
+      </h1>
 
-  <Carousel interval={3000} indicators controls={false} className="pb-5 pt-5 custom-carousel">
-    {/* Map through the chunks and render them in separate carousel items */}
-    {chunks.map((chunk, index) => (
-      <Carousel.Item key={index}>
-        <Row className="g-4">
-          {chunk.map((testimonial) => (
-            <Col key={testimonial.id} md={4}>    
-
-                         <div
-                key={testimonial.id}
-                className={`testimonial-item p-4 ${[2, 5, 8, 11].includes(testimonial.id) ? 'bg-customgreen text-white' : 'bg-lightblue'}`}
-              >
-                <FontAwesomeIcon 
-                  icon={faQuoteLeft} 
-                  className={`fa-2x ${[2, 5, 8, 11].includes(testimonial.id) ? 'text-white' : 'text-customgreen'} mb-3`} 
-                />
-                <p>{testimonial.text}</p>
-                <div className="d-flex align-items-center mt-3">
-                  <img
-                    src={testimonial.img}
-                    alt={testimonial.name}
-                    className="img-fluid flex-shrink-0 rounded"
-                    style={{ width: '50px', height: '50px' }}
-                  />
-                  <div className="ps-3">
-                    <h5 className="mb-1">{testimonial.name}</h5>
-                    <small>{testimonial.profession}</small>
+      <Carousel interval={3000} indicators controls={false} className="pb-5 pt-5 custom-carousel">
+        {/* Map through the first 4 chunks and render them in separate carousel items */}
+        {chunks.slice(0, totalSlides).map((chunk, index) => (
+          <Carousel.Item key={index}>
+            <Row className="g-4">
+              {chunk.map((testimonial) => (
+                <Col key={testimonial.id} md={4}>
+                  {/* Testimonial item layout */}
+                  <div
+                    key={testimonial.id}
+                    className={`testimonial-item p-4 ${[2, 5, 8, 11].includes(testimonial.id) ? 'bg-customgreen text-white' : 'bg-lightblue'}`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faQuoteLeft}
+                      className={`fa-2x ${[2, 5, 8, 11].includes(testimonial.id) ? 'text-white' : 'text-customgreen'} mb-3`}
+                    />
+                    <p>{testimonial.text}</p>
+                    <div className="d-flex align-items-center mt-3">
+                      <img
+                        src={testimonial.img}
+                        alt={testimonial.name}
+                        className="img-fluid flex-shrink-0 rounded"
+                        style={{ width: '50px', height: '50px' }}
+                      />
+                      <div className="ps-3">
+                        <h5 className="mb-1">{testimonial.name}</h5>
+                        <small>{testimonial.profession}</small>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
-      </Carousel.Item>
-    ))}
-  </Carousel>
-</Container>
+                </Col>
+              ))}
+            </Row>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </Container>
   );
 };
-
 
 // Footer---start
 
 
 const Footer = () => {
   return (
-        <div className="container-xxl  bg-dark text-white-50 footer  pt-5 ">
+        <div className="container-xxl  bg-dark text-white-50 footer  mt-5">
 
 <Row className="g-5 ">
       {/* Company Section */}
@@ -552,27 +552,33 @@ const Footer = () => {
         <h5 className="text-white mb-4">Company</h5>
         <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/about-us"> About Us</Button>
+  <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+  <FaAngleRight className="me-2" /> About Us
+</Button>
+  </Col>
+</Row>
+      <Row>
+        <Col>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Contact Us</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Our Services</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Privacy Policy</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Terms & Condition</Button>
         </Col>
       </Row>
       </Col>
@@ -580,55 +586,69 @@ const Footer = () => {
       {/* Quick Links Section */}
       <Col lg={3} md={6}>
         <h5 className="text-white mb-4">Quick Links</h5>
-        <Row>
+        <Row className="d-flex align-items-center">
+  <Col>
+  <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+  <FaAngleRight className="me-2" /> About Us
+</Button>
+  </Col>
+</Row>
+      <Row>
         <Col>
-          <Button variant="link" className="text-white-50 " href="/about-us">About Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Contact Us</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Our Services</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Privacy Policy</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Terms & Condition</Button>
         </Col>
       </Row>
       </Col>
       
       {/* Contact Section */}
       <Col lg={3} md={6}>
-        <h5 className="text-white mb-4">Contact</h5>
-        <p className="mb-2"><FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />123 Street, New York, USA</p>
-        <p className="mb-2"><FontAwesomeIcon icon={faPhoneAlt} className="me-3" />+012 345 67890</p>
-        <p className="mb-2"><FontAwesomeIcon icon={faEnvelope} className="me-3" />info@example.com</p>
-        <div className="d-flex pt-2">
-          <Button variant="outline-light" className="btn-social" href="https://twitter.com">
-            <FontAwesomeIcon icon={faTwitter} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://facebook.com">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://youtube.com">
-            <FontAwesomeIcon icon={faYoutube} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </Button>
-        </div>
-      </Col>
-      
+            <h5 className="text-white mb-4">Contact</h5>
+            <p className="mb-2">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />
+              123 Street, New York, USA
+            </p>
+            <p className="mb-2 d-inline-flex align-items-center">
+              <FaPhoneAlt className="me-3" />
+              +012 345 67890
+            </p>
+            <p className="mb-2">
+              <FontAwesomeIcon icon={faEnvelope} className="me-3" />
+              info@example.com
+            </p>
+            <div className="d-flex pt-2">
+              <Button variant="outline-light" className="btn-social" href="https://twitter.com">
+                <FontAwesomeIcon icon={faTwitter} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://facebook.com">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://youtube.com">
+                <FontAwesomeIcon icon={faYoutube} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </Button>
+            </div>
+          </Col>
       {/* Newsletter Section */}
       <Col lg={3} md={6}>
         <h5 className="text-white mb-4">Newsletter</h5>
@@ -666,7 +686,6 @@ const Footer = () => {
    </div>
   );
 };
-
 
 const MainComponent = () => {
   return (

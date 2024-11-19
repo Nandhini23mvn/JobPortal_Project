@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import {  faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {  faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 import { faTwitter, faFacebookF, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,7 @@ import { Navbar, Nav, NavDropdown, Dropdown, Container, Button ,  Row, Col , For
 
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaAngleRight } from 'react-icons/fa'; // Import the icon
+import {  FaPhoneAlt } from 'react-icons/fa';
 
 import jobData from '../Data/Jobdata.json';
 import carouselImage from '../Data/img/carousel-1.jpg';
@@ -187,9 +188,16 @@ const About = ({ jobData = {} }) => {
       }}
     >
       <Container className="box my-5 pt-5 pb-4">
-        <h1 className="text-white mb-3 animated slideInDown custom-heading">
-          {title || "Testimonial"}
-        </h1>
+      <h1 
+        className="text-white mb-3 animated slideInDown custom-heading 
+                    display-3 display-sm-4 display-md-5 display-lg-6 display-xl-7"
+        style={{
+          fontFamily: 'Inter, sans-serif',  // Applying Inter font family
+          fontWeight: 700,  // Applying font weight 700
+        }}
+      >
+        {title || "Testimonial"}
+      </h1>
         <Breadcrumb className="text-uppercase" aria-label="breadcrumb">
           <Breadcrumb.Item className="custom-green" href="#">
             Home
@@ -359,27 +367,33 @@ const Footer = () => {
         <h5 className="text-white mb-4">Company</h5>
         <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/about-us"> About Us</Button>
+  <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+  <FaAngleRight className="me-2" /> About Us
+</Button>
+  </Col>
+</Row>
+      <Row>
+        <Col>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Contact Us</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Our Services</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Privacy Policy</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Terms & Condition</Button>
         </Col>
       </Row>
       </Col>
@@ -396,48 +410,60 @@ const Footer = () => {
 </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/contact-us">Contact Us</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Contact Us</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/our-services">Our Services</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Our Services</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/privacy-policy">Privacy Policy</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Privacy Policy</Button>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="link" className="text-white-50" href="/terms">Terms & Condition</Button>
+        <Button variant="link" className="text-white-50 text-decoration-none d-flex align-items-center" href="/about-us">
+        <FaAngleRight className="me-2" />Terms & Condition</Button>
         </Col>
       </Row>
       </Col>
       
       {/* Contact Section */}
       <Col lg={3} md={6}>
-        <h5 className="text-white mb-4">Contact</h5>
-        <p className="mb-2"><FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />123 Street, New York, USA</p>
-        <p className="mb-2"><FontAwesomeIcon icon={faPhoneAlt} className="me-3" />+012 345 67890</p>
-        <p className="mb-2"><FontAwesomeIcon icon={faEnvelope} className="me-3" />info@example.com</p>
-        <div className="d-flex pt-2">
-          <Button variant="outline-light" className="btn-social" href="https://twitter.com">
-            <FontAwesomeIcon icon={faTwitter} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://facebook.com">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://youtube.com">
-            <FontAwesomeIcon icon={faYoutube} />
-          </Button>
-          <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </Button>
-        </div>
-      </Col>
-      
+            <h5 className="text-white mb-4">Contact</h5>
+            <p className="mb-2">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="me-3" />
+              123 Street, New York, USA
+            </p>
+            <p className="mb-2 d-inline-flex align-items-center">
+              <FaPhoneAlt className="me-3" />
+              +012 345 67890
+            </p>
+            <p className="mb-2">
+              <FontAwesomeIcon icon={faEnvelope} className="me-3" />
+              info@example.com
+            </p>
+            <div className="d-flex pt-2">
+              <Button variant="outline-light" className="btn-social" href="https://twitter.com">
+                <FontAwesomeIcon icon={faTwitter} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://facebook.com">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://youtube.com">
+                <FontAwesomeIcon icon={faYoutube} />
+              </Button>
+              <Button variant="outline-light" className="btn-social" href="https://linkedin.com">
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </Button>
+            </div>
+          </Col>
       {/* Newsletter Section */}
       <Col lg={3} md={6}>
         <h5 className="text-white mb-4">Newsletter</h5>
