@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { Button, Col, Container,  Table, Modal,Row,Card } from "react-bootstrap";
 import { Navbar, Nav, Image,  } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faUser, faUserPlus, faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { faTachometerAlt,faAngleDown } from '@fortawesome/free-solid-svg-icons'; // Ensure this import is present
 import myImage from '../Data/img/com-logo-1.jpg'; // Adjust the path as necessary
-
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const cardData = [
   {
     variant: 'Primary',
@@ -37,7 +37,8 @@ const AdminPanel = () => {
   const [activeButton, setActiveButton] = useState("dashboard");
   const [isEditing, setIsEditing] = useState(false);
   const [initialData, setInitialData] = useState(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpandedUserManagement, setIsExpandedUserManagement] = useState(false);
+  const [isExpandedMessage, setIsExpandedMessage] = useState(false);
 
   const [formData, setFormData] = useState({
     fname: "",
@@ -63,23 +64,52 @@ const AdminPanel = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [showModal, setShowModal] = useState(false); // For viewing user details
   const [viewUser, setViewUser] = useState(null); // To hold user details for viewing
-
-
+  const [messages, setMessages] = useState([]); // Store all messages
+  const [selectedMessages, setSelectedMessages] = useState([]); // Store selected messages
+  const [currentMessages, setCurrentMessages] = useState(messages); // Filtered messages based on search
   
+ 
+  const handleSelectMessage = (messageId) => {
+    setSelectedMessages((prevSelected) =>
+      prevSelected.includes(messageId)
+        ? prevSelected.filter((id) => id !== messageId)
+        : [...prevSelected, messageId]
+    );
+  };
+  
+ 
+  
+  const handleViewMessage = (message) => {
+    // Implement your view message logic
+    console.log("Viewing message:", message);
+  };
+  
+  const onDeleteMessage = (messageId) => {
+    // Implement your delete message logic
+    setMessages((prevMessages) => prevMessages.filter((msg) => msg._id !== messageId));
+  };
+  
+   
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
     setIsEditing(false);
     setInitialData(null);
     setError(null); // Reset error state when switching tabs
-    setIsExpanded(false); // Close menu on selection, if desired
+    setIsExpandedUserManagement(false); // Close menu on selection, if desired
 
   };
+ 
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+
+
+  const toggleExpandUserManagement = () => {
+    setIsExpandedUserManagement((prevState) => !prevState);
   };
 
+  const toggleExpandMessage = () => {
+    setIsExpandedMessage((prevState) => !prevState);
+  };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "avatar" && files) {
@@ -230,7 +260,8 @@ const AdminPanel = () => {
   const indexOfLastUser = currentPage * itemsPerPage;
   const indexOfFirstUser = indexOfLastUser - itemsPerPage;
   const currentUsers = filteredAndSortedUsers.slice(indexOfFirstUser, indexOfLastUser);
-
+  
+  const [viewedMessage, setViewedMessage] = useState(null); // State to view selected message
   const onDeleteUser = async (userId) => {
     try {
       const response = await fetch(`http://localhost:5500/api/users/${userId}`, {
@@ -244,6 +275,20 @@ const AdminPanel = () => {
     }
   };
 
+ 
+
+  // Define the handleMarkAsRead function
+  const handleMarkAsRead = (id) => {
+    console.log(`Message with ID ${id} marked as read`);
+    // Implement your logic for marking the message as read
+  };
+
+  // Define the handleDeleteMessage function
+  const handleDeleteMessage = (id) => {
+    console.log(`Message with ID ${id} deleted`);
+    // Implement your logic for deleting the message
+  };
+
   const handleViewUser = (user) => {
     setViewUser(user);
     setShowModal(true);
@@ -252,6 +297,26 @@ const AdminPanel = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     setViewUser(null);
+  };
+
+  // Example fetch function to simulate retrieving messages
+  useEffect(() => {
+    // Fetch messages (replace with your actual API request)
+    const fetchMessages = async () => {
+      // For this example, we'll use static data
+      
+
+      
+    };
+
+    fetchMessages();
+  }, []);
+
+  
+  
+  // Handle closing the modal
+  const handleClose = () => {
+    setViewedMessage(null);
   };
 
 
@@ -284,79 +349,53 @@ const AdminPanel = () => {
         </Navbar.Collapse>
     </Navbar>
 
-    <Row>  
-    <Col md={2} className="bg-dark sidebar" style={{ height: "100vh" }}>
-      <Button
-        variant={activeButton === "dashboard" }
-        onClick={() => handleButtonClick("dashboard")}
-        className="p-2 text-white w-100"
-        style={{
-          backgroundColor: '#19222E',
-          borderRadius: '0px',
-          justifyContent: 'flex-start',
-          textAlign: 'left'
-        }}
-      >
-        <FontAwesomeIcon icon={faTachometerAlt} className="me-2" />
-        Dashboard
-      </Button>
-
-      
-          
-    {/* {activeButton === "dashboard" && <h3>Dashboard Content</h3>}
-<>
-      {[
-        'Primary',          
-      ].map((variant) => (
-        <Card
-          bg={variant.toLowerCase()}
-          key={variant}
-          text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-          style={{ width: '18rem' }}
-          className="mb-4 mt-3"
-        >
-        <Card.Img variant="top" src={myImage} />
-         <Card.Header>Header</Card.Header>
-          <Card.Body>
-            <Card.Title>{variant} Card Title </Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="danger">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-      ))}
-    </> */}
-
-
-          <Col >
-    <div className="sidenav-item w-100">
-    <button
-      className="sidenav-link ripple-surface-primary d-flex justify-content-start align-items-center"
-      onClick={toggleExpand}
+    <Row >
+  {/* Sidebar Column */}
+  <Col md={2} className=" sidebar" style={{ height: '130vh',  backgroundColor: '#19222E',
+ }}>
+    <Button
+      variant={activeButton === "dashboard" }
+      onClick={() => handleButtonClick("dashboard")}
+      className="text-white"
       style={{
         backgroundColor: '#19222E',
-        color: 'white',
-        width: '100%',
-        cursor: 'pointer',
-        padding: '0.75rem',
         borderRadius: '0px',
+        justifyContent: 'flex-start',
+        textAlign: 'left',
+        width: '100%'
       }}
     >
-      <FontAwesomeIcon icon={faUser} className="me-2" />
-      User Management
-      <FontAwesomeIcon
-        icon={faAngleDown}
-        className={`ml-auto rotate-icon ${isExpanded ? 'rotate-180' : ''}`}
-        style={{
-          transition: 'transform 0.3s',
-          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-        }}
-      />
-    </button>
+      <FontAwesomeIcon icon={faTachometerAlt} className="me-4" />
+      Dashboard
+    </Button>
 
-      {isExpanded && (
+    {/* User Management Section */}
+    <div className="sidenav-item w-100">
+      <button
+        className="sidenav-link ripple-surface-primary d-flex justify-content-start align-items-center"
+        onClick={toggleExpandUserManagement}
+        style={{
+          backgroundColor: '#19222E',
+          color: 'white',
+          width: '100%',
+          cursor: 'pointer',
+          padding: '0.75rem',
+          borderRadius: '0px',
+        }}
+      >
+        <FontAwesomeIcon icon={faUser} className="me-2" />
+        User Management
+        <FontAwesomeIcon
+          icon={faAngleDown}
+          className={`ml-auto rotate-icon ${isExpandedUserManagement ? 'rotate-180' : ''}`}
+          style={{
+            transition: 'transform 0.3s',
+            transform: isExpandedUserManagement ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}
+        />
+      </button>
+
+      {isExpandedUserManagement && (
         <ul className="sidenav-collapse" style={{ listStyleType: 'none', padding: 0, margin: '0.5rem 0' }}>
           <li className="sidenav-item">
             <button
@@ -366,14 +405,10 @@ const AdminPanel = () => {
                 backgroundColor: '#171b21',
                 color: 'white',
                 display: 'flex',
-                // alignItems: 'center',
-                padding: '0.5rem 1rem ',
+                padding: '0.5rem 1rem',
                 cursor: 'pointer',
                 borderRadius: '0px',
                 width: '100%',
-                // textAlign: 'left' // Ensure text is left-aligned
-
-
               }}
             >
               <FontAwesomeIcon icon={faUserPlus} className="me-2" />
@@ -388,11 +423,9 @@ const AdminPanel = () => {
                 backgroundColor: '#171b21',
                 color: 'white',
                 display: 'flex',
-                width: '100%',
-                // alignItems: 'center',
                 padding: '0.5rem 1rem',
                 cursor: 'pointer',
-                // borderRadius: '5px'
+                width: '100%',
               }}
             >
               <FontAwesomeIcon icon={faUsersCog} className="me-2" />
@@ -402,8 +435,56 @@ const AdminPanel = () => {
         </ul>
       )}
     </div>
-</Col>
-</Col>
+
+    {/* Message Section */}
+    <div className="sidenav-item w-100">
+      <button
+        className="sidenav-link ripple-surface-primary d-flex justify-content-start align-items-center"
+        onClick={toggleExpandMessage}
+        style={{
+          backgroundColor: '#19222E',
+          color: 'white',
+          width: '100%',
+          cursor: 'pointer',
+          padding: '0.75rem',
+          borderRadius: '0px',
+        }}
+      >
+        <FontAwesomeIcon icon={faEnvelope} className="me-2" />
+        Message
+        <FontAwesomeIcon
+          icon={faAngleDown}
+          className={`ml-auto rotate-icon ${isExpandedMessage ? 'rotate-180' : ''}`}
+          style={{
+            transition: 'transform 0.3s',
+            transform: isExpandedMessage ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}
+        />
+      </button>
+
+      {isExpandedMessage && (
+        <ul className="sidenav-collapse" style={{ listStyleType: 'none', padding: 0, margin: '0.5rem 0' }}>
+          <li className="sidenav-item">
+            <button
+              onClick={() => handleButtonClick("manageMessage")}
+              className={`sidenav-link ripple-surface ${activeButton === "manageMessage" ? 'active' : ''}`}
+              style={{
+                backgroundColor: '#171b21',
+                color: 'white',
+                display: 'flex',
+                padding: '0.5rem 1rem',
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              <FontAwesomeIcon icon={faUsersCog} className="me-2" />
+              Manage Message
+            </button>
+          </li>
+        </ul>
+      )}
+    </div>
+  </Col>
  
         <Col md={6} className="dashboard-content">
         {/* Render Dashboard Content Conditionally */}
@@ -435,7 +516,7 @@ const AdminPanel = () => {
         )}
      
 
-    
+    {/* add user content */}
         
           {activeButton === "addUser" && (
             <form onSubmit={handleSubmit}>
@@ -556,6 +637,8 @@ const AdminPanel = () => {
               <Button type="submit" variant="primary">Add User</Button>
             </form>
           )}
+          
+          {/* manage user content */}
 
           {activeButton === "manageUser" && (
             <>
@@ -612,7 +695,65 @@ const AdminPanel = () => {
               <Button variant="danger" onClick={handleDeleteSelected} disabled={selectedUsers.length === 0}>Delete Selected</Button>
             </>
           )}
+         
+
+         {/* manage message content */}
+
+{activeButton === "manageMessage" && (
+  <>
+    <h3>Manage Messages</h3>
+    <div className="mb-3">
+      <input
+        type="text"
+        placeholder="Search messages..."
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+        className="form-control mb-2"
+      />
+      <Button variant="primary" onClick={handleSearch}>Search</Button>
+    </div>
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>
+            <input
+              type="checkbox"
+              onChange={handleSelectAll}
+              checked={selectedMessages.length === messages.length}
+            />
+          </th>
+          <th>Sender</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {currentMessages.map((message) => (
+          <tr key={message._id}>
+            <td>
+              <input
+                type="checkbox"
+                checked={selectedMessages.includes(message._id)}
+                onChange={() => handleSelectMessage(message._id)}
+              />
+            </td>
+            <td>{message.sender}</td>
+            <td>{message.subject}</td>
+            <td>{message.body}</td>
+            <td>
+              <Button variant="info" onClick={() => handleViewMessage(message)}>View</Button>
+              <Button variant="danger" onClick={() => onDeleteMessage(message._id)}>Delete</Button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+    <Button variant="danger" onClick={handleDeleteSelected} disabled={selectedMessages.length === 0}>Delete Selected</Button>
+  </>
+)}
         </Col>
+        
         </Row>
 
       {/* Modal for viewing user details */}
@@ -638,8 +779,73 @@ const AdminPanel = () => {
           <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
         </Modal.Footer>
       </Modal>
+      
+      <Col>
+       {/* Modal for viewing message details */}
+       <Modal show={viewedMessage !== null} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Message Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {viewedMessage && (
+            <div>
+              <p>
+                <strong>Name:</strong> {viewedMessage.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {viewedMessage.email}
+              </p>
+              <p>
+                <strong>Subject:</strong> {viewedMessage.subject}
+              </p>
+              <p>
+                <strong>Message:</strong> {viewedMessage.message}
+              </p>
+              <p>
+                <strong>Date:</strong>{" "}
+                {new Date(viewedMessage.date).toLocaleString()}
+              </p>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+     
+     {/* Modal for managing message details */}
+<Modal show={viewedMessage !== null} onHide={handleClose}>
+  <Modal.Header closeButton>
+    <Modal.Title>Manage Message</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    {viewedMessage && (
+      <div>
+        <p><strong>Name:</strong> {viewedMessage.name}</p>
+        <p><strong>Email:</strong> {viewedMessage.email}</p>
+        <p><strong>Subject:</strong> {viewedMessage.subject}</p>
+        <p><strong>Message:</strong> {viewedMessage.message}</p>
+        <p><strong>Date:</strong> {new Date(viewedMessage.date).toLocaleString()}</p>
+      </div>
+    )}
+    {/* You can add form or actions here for managing the message, e.g., mark as read, delete, etc. */}
+    <div>
+      <Button variant="primary" onClick={() => handleMarkAsRead(viewedMessage.id)}>Mark as Read</Button>
+      <Button variant="danger" onClick={() => handleDeleteMessage(viewedMessage.id)}>Delete</Button>
+    </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleClose}>Close</Button>
+  </Modal.Footer>
+</Modal>
+
+      </Col>
     </Container>
+
   );
 };
+
 
 export default AdminPanel;

@@ -204,108 +204,197 @@ const About = ({ jobData = {} }) => {
 };
 
 // {Jobs Start}
+
 const ContactSection = () => {
-    return (
-      <Container fluid className="py-5 container-xxl">
-        <Container>
-          <h1 className="text-center  mb-5">Contact For Any Query</h1>
-          <Row className="g-4">
-            <Col xs={12}>
-              <Row className="gy-4">
-                <Col md={4}>
-                  <div className="d-flex align-items-center bg-light rounded p-4">
-                    <div className="bg-white border rounded d-flex align-items-center justify-content-center me-3" style={{ width: '45px', height: '45px' }}>
-                      <FaMapMarkerAlt className="text-customgreen" />
-                    </div>
-                    <span>123 Street, New York, USA</span>
+  const title = "Contact For Any Query";
+  const mapEmbedURL =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd";
+  const buttonText = "Send Message";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(`Changing ${name} to ${value}`);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submitting form with data:", formData);
+
+    try {
+      const response = await fetch("http://localhost:5500/api/message/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorDetails = await response.text();
+        throw new Error(`Network response was not ok: ${errorDetails}`);
+      }
+
+      const result = await response.json();
+      console.log("Request submitted successfully:", result);
+      alert("Your request has been submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting request:", error);
+      alert(`Error submitting your request: ${error.message}`);
+    }
+  };
+
+  return (
+    <Container fluid className="py-5 container-xxl">
+      <Container>
+        <h1 className="text-center mb-5">{title}</h1>
+        <Row className="g-4">
+          <Col xs={12}>
+            <Row className="gy-4">
+              <Col md={4}>
+                <div className="d-flex align-items-center bg-light rounded p-4">
+                  <div
+                    className="bg-white border rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: "45px", height: "45px" }}
+                  >
+                    <FaMapMarkerAlt className="text-customgreen" />
                   </div>
+                  <span>123 Street, New York, USA</span>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="d-flex align-items-center bg-light rounded p-4">
+                  <div
+                    className="bg-white border rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: "45px", height: "45px" }}
+                  >
+                    <FaEnvelopeOpen className="text-customgreen" />
+                  </div>
+                  <span>info@example.com</span>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="d-flex align-items-center bg-light rounded p-4">
+                  <div
+                    className="bg-white border rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: "45px", height: "45px" }}
+                  >
+                    <FaPhoneAlt className="text-customgreen" />
+                  </div>
+                  <span>+012 345 6789</span>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+
+          <Col md={6}>
+            <iframe
+              title="Map showing New York, USA"
+              className="position-relative rounded w-100 h-100"
+              src={mapEmbedURL}
+              frameBorder="0"
+              style={{ minHeight: "400px", border: "0" }}
+              allowFullScreen
+              aria-hidden="false"
+              tabIndex="0"
+            />
+          </Col>
+
+          <Col md={6}>
+            <p className="mb-4">
+              The contact form is currently inactive. Get a functional and
+              working contact form with Ajax & PHP in a few minutes. Just copy
+              and paste the files, add a little code and you're done.{" "}
+              <a href="https://htmlcodex.com/contact-form" className="text-customgreen">
+                Download Now
+              </a>
+              .
+            </p>
+            <Form onSubmit={handleSubmit}>
+              <Row className="g-3">
+                <Col md={6}>
+                  <Form.Group controlId="name">
+                    <Form.Floating>
+                      <Form.Control
+                        type="text"
+                        placeholder="Your Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                      <label>Your Name</label>
+                    </Form.Floating>
+                  </Form.Group>
                 </Col>
-                <Col md={4}>
-                  <div className="d-flex align-items-center bg-light rounded p-4">
-                    <div className="bg-white border rounded d-flex align-items-center justify-content-center me-3" style={{ width: '45px', height: '45px' }}>
-                      <FaEnvelopeOpen className="text-customgreen" />
-                    </div>
-                    <span>info@example.com</span>
-                  </div>
+                <Col md={6}>
+                  <Form.Group controlId="email">
+                    <Form.Floating>
+                      <Form.Control
+                        type="email"
+                        placeholder="Your Email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                      <label>Your Email</label>
+                    </Form.Floating>
+                  </Form.Group>
                 </Col>
-                <Col md={4}>
-                  <div className="d-flex align-items-center bg-light rounded p-4">
-                    <div className="bg-white border rounded d-flex align-items-center justify-content-center me-3" style={{ width: '45px', height: '45px' }}>
-                      <FaPhoneAlt className="text-customgreen" />
-                    </div>
-                    <span>+012 345 6789</span>
-                  </div>
+                <Col xs={12}>
+                  <Form.Group controlId="subject">
+                    <Form.Floating>
+                      <Form.Control
+                        type="text"
+                        placeholder="Subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                      />
+                      <label>Subject</label>
+                    </Form.Floating>
+                  </Form.Group>
+                </Col>
+                <Col xs={12}>
+                  <Form.Group controlId="message">
+                    <Form.Floating>
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Leave a message here"
+                        style={{ height: "150px" }}
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                      />
+                      <label>Message</label>
+                    </Form.Floating>
+                  </Form.Group>
+                </Col>
+                <Col xs={12}>
+                  <Button
+                    className="w-100 py-3 !bg-customgreen hover:bg-customgreen !border-customgreen text-white"
+                    type="submit"
+                  >
+                    {buttonText}
+                  </Button>
                 </Col>
               </Row>
-            </Col>
-  
-            <Col md={6}>
-            <iframe
-                title="Map showing New York, USA" // Add a descriptive title here
-                className="position-relative rounded w-100 h-100"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                  frameBorder="0"
-                style={{ minHeight: '400px', border: '0' }}
-                allowFullScreen
-                aria-hidden="false"
-                tabIndex="0"
-                />
-            </Col>
-  
-            <Col md={6}>
-              <p className="mb-4">
-                The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done.{' '}
-                <a href="https://htmlcodex.com/contact-form" className="text-customgreen" >Download Now</a>.
-              </p>
-              <Form>
-                <Row className="g-3">
-                  <Col md={6}>
-                    <Form.Group controlId="name">
-                      <Form.Floating>
-                        <Form.Control type="text" placeholder="Your Name" />
-                        <label>Your Name</label>
-                      </Form.Floating>
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group controlId="email">
-                      <Form.Floating>
-                        <Form.Control type="email" placeholder="Your Email" />
-                        <label>Your Email</label>
-                      </Form.Floating>
-                    </Form.Group>
-                  </Col>
-                  <Col xs={12}>
-                    <Form.Group controlId="subject">
-                      <Form.Floating>
-                        <Form.Control type="text" placeholder="Subject" />
-                        <label>Subject</label>
-                      </Form.Floating>
-                    </Form.Group>
-                  </Col>
-                  <Col xs={12}>
-                    <Form.Group controlId="message">
-                      <Form.Floating>
-                        <Form.Control as="textarea" placeholder="Leave a message here" style={{ height: '150px' }} />
-                        <label>Message</label>
-                      </Form.Floating>
-                    </Form.Group>
-                  </Col>
-                  <Col xs={12}>
-                  <Button className="w-100 py-3 !bg-customgreen hover:bg-customgreen !border-customgreen text-white" type="submit">
-                      Send Message
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
+            </Form>
+          </Col>
+        </Row>
       </Container>
-    );
-  };
-  
-
+    </Container>
+  );
+};
 
 // Footer---start
 
