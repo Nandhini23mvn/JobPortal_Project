@@ -174,7 +174,7 @@ const AboutSection = () => {
   const images = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
  
   return (
-    <Container fluid className=" container-xxl  ">
+    <Container fluid className=" container-xxl pb-5 pt-2 ">
       <Container>
         <Row className="g-5 align-items-center ">
           <Col lg={6} className="wow fadeIn">
@@ -220,7 +220,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 page-header mb-5 position-relative"
+      className="py-5  page-header mb-5 position-relative"
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -260,7 +260,7 @@ const About = ({ jobData = {} }) => {
 
 const Footer = () => {
   return (
-        <div className="container-xxl  bg-dark text-white-50 footer  mt-5">
+        <div className="container-xxl pt-5 bg-dark text-white-50 footer  mt-5">
 
 <Row className="g-5 ">
       {/* Company Section */}

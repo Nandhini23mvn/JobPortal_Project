@@ -181,7 +181,7 @@ const About = ({ jobData = {} }) => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <Container className="box my-5 pt-5 pb-4">
+      <Container className="box my-5 pt-5 pb-5">
         <h1 className="text-white mb-3 animated slideInDown custom-heading">
           {title || "Category"}
         </h1>
@@ -221,9 +221,9 @@ const icons = {
     const categories = jobData.jobcategories;
   
     return (
-      <Container fluid className=" container-xxl py-5  ">
+      <Container fluid className=" container-xxl pt-5 pb-5 ">
         <Container>
-          <h1 className="text-center mb-5 font-inter font-40xl font-bold text-dark">Explore By Category</h1>
+          <h1 className="text-center mb-5 pt-4  font-inter font-40xl font-bold text-dark">Explore By Category</h1>
           <Row className="g-4">
             {categories.map((category, index) => (
               <Col lg={3} sm={6} key={index} className="wow fadeInUp" data-wow-delay={`${0.1 * (index + 1)}s`}>
@@ -251,7 +251,7 @@ const icons = {
 
 const Footer = () => {
   return (
-        <div className="container-xxl  bg-dark text-white-50 footer  mt-5">
+        <div className="container-xxl pt-5  bg-dark text-white-50 footer  ">
 
 <Row className="g-5 ">
       {/* Company Section */}

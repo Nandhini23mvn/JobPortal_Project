@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from "react";
 import { Button, Col, Container,  Table, Modal,Row,Card } from "react-bootstrap";
-import { Navbar, Nav, Image,  } from 'react-bootstrap';
+import { Navbar, Nav, Image, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faUser, faUserPlus, faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { faTachometerAlt,faAngleDown } from '@fortawesome/free-solid-svg-icons'; // Ensure this import is present
@@ -64,32 +64,9 @@ const AdminPanel = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [showModal, setShowModal] = useState(false); // For viewing user details
   const [viewUser, setViewUser] = useState(null); // To hold user details for viewing
-  const [messages, setMessages] = useState([]); // Store all messages
-  const [selectedMessages, setSelectedMessages] = useState([]); // Store selected messages
-  const [currentMessages, setCurrentMessages] = useState(messages); // Filtered messages based on search
   
  
-  const handleSelectMessage = (messageId) => {
-    setSelectedMessages((prevSelected) =>
-      prevSelected.includes(messageId)
-        ? prevSelected.filter((id) => id !== messageId)
-        : [...prevSelected, messageId]
-    );
-  };
-  
- 
-  
-  const handleViewMessage = (message) => {
-    // Implement your view message logic
-    console.log("Viewing message:", message);
-  };
-  
-  const onDeleteMessage = (messageId) => {
-    // Implement your delete message logic
-    setMessages((prevMessages) => prevMessages.filter((msg) => msg._id !== messageId));
-  };
-  
-   
+
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
@@ -319,8 +296,43 @@ const AdminPanel = () => {
     setViewedMessage(null);
   };
 
+ // Fetch form data when the component mounts
+ useEffect(() => {
+  const fetchMessages = async () => {
+    try {
+      const response = await fetch('http://localhost:5500/api/messages');
+      if (!response.ok) {
+        throw new Error('Failed to fetch messages');
+      }
+      const data = await response.json();
+      setMessages(data); // Store the fetched messages in state
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+    }
+  };
 
-  
+  fetchMessages();
+}, []);
+const [messages, setMessages] = useState([
+  { name: 'John Doe', email: 'john@example.com', subject: 'Inquiry', message: 'Hello, I need more information about your services.' },
+  { name: 'Jane Smith', email: 'jane@example.com', subject: 'Support', message: 'I have an issue with my account.' },
+]);
+const [newMessage, setNewMessage] = useState({
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+});
+
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setNewMessage((prevMessage) => ({
+    ...prevMessage,
+    [name]: value,
+  }));
+};
+
+
   return (
     <Container fluid className="p-0">
     <Navbar bg="white" expand="lg" style={{ height: '60px' }} className="sticky shadow p-0 w-100">
@@ -701,55 +713,84 @@ const AdminPanel = () => {
 
 {activeButton === "manageMessage" && (
   <>
-    <h3>Manage Messages</h3>
-    <div className="mb-3">
-      <input
-        type="text"
-        placeholder="Search messages..."
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        className="form-control mb-2"
-      />
-      <Button variant="primary" onClick={handleSearch}>Search</Button>
-    </div>
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>
-            <input
-              type="checkbox"
-              onChange={handleSelectAll}
-              checked={selectedMessages.length === messages.length}
-            />
-          </th>
-          <th>Sender</th>
-          <th>Subject</th>
-          <th>Message</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {currentMessages.map((message) => (
-          <tr key={message._id}>
-            <td>
-              <input
-                type="checkbox"
-                checked={selectedMessages.includes(message._id)}
-                onChange={() => handleSelectMessage(message._id)}
-              />
-            </td>
-            <td>{message.sender}</td>
-            <td>{message.subject}</td>
-            <td>{message.body}</td>
-            <td>
-              <Button variant="info" onClick={() => handleViewMessage(message)}>View</Button>
-              <Button variant="danger" onClick={() => onDeleteMessage(message._id)}>Delete</Button>
-            </td>
+    <div>
+      <h2>Admin Panel</h2>
+      <h3>Form Submissions</h3>
+
+      {/* Message Form */}
+      <Form onSubmit={handleSubmit} className="mb-4">
+        <Form.Group controlId="formName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your name"
+            name="name"
+            value={newMessage.name}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            value={newMessage.email}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formSubject">
+          <Form.Label>Subject</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter subject"
+            name="subject"
+            value={newMessage.subject}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formMessage">
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="Enter your message"
+            name="message"
+            value={newMessage.message}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit Message
+        </Button>
+      </Form>
+
+      {/* Messages Table */}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
-    <Button variant="danger" onClick={handleDeleteSelected} disabled={selectedMessages.length === 0}>Delete Selected</Button>
+        </thead>
+        <tbody>
+          {messages.map((message, index) => (
+            <tr key={index}>
+              <td>{message.name}</td>
+              <td>{message.email}</td>
+              <td>{message.subject}</td>
+              <td>{message.message}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
   </>
 )}
         </Col>

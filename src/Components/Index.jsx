@@ -205,29 +205,29 @@ const CarouselFadeExample = () => {
             className="d-block w-100" 
             src={imageMap[item.image]} // Ensure imageMap is defined
             alt={`Slide ${key}`}
-            style={{ objectFit: 'cover', height: '100vh' }} // Ensure full-height image scaling
+            style={{ objectFit: 'cover', height: '120vh' }} // Ensure full-height image scaling
           />
           <div
             className="position-absolute top-0 start-0 d-flex w-100 h-100 align-items-center"
-            style={{ background: "rgba(24, 29, 56, 0.7)" }}
+            style={{ background: "rgba(43, 57, 64, .5)" }}
           >
             <div className="box">
               <Container className="container-xl p-5 p-0">
                 <Row className="justify-content-start">
                   <Col xs={12} md={10} lg={8}>
                     <div className="text-white">
-                      <h1 className="header-3 font-inter font-bold mb-4 text-center text-md-start">
-                        {item.heading}
-                      </h1>
-                      <p className="fs-5 mb-4 text-center text-md-start">
+                    <h1 className="header-6 font-inter font-bold mb-5 text-center text-md-start text-[62px]">
+                    {item.heading}
+                    </h1>
+                      <p className="fs-5 mb-4 p-1 text-center text-md-start">
                         {job?.description} {/* Display job description */}
                       </p>
-                      <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start">
+                      <div className="d-flex flex-column flex-md-row  justify-content-center justify-content-md-start">
                         {item.buttons.map((btn, index) => (
                           <a
                             key={index}
                             href={btn.link}
-                            className={`btn ${index === 0 ? 'btn-customgreen !bg-customgreen' : 'btn-primary'} text-white font-inter font-bold py-md-3 px-md-5 mb-2 mb-md-0 me-md-3`}
+                            className={`btn ${index === 0 ? 'btn-customgreen !bg-customgreen' : 'btn-primary'} text-white font-inter  !font-normal_1 py-md-3 px-md-5 mb-1 mb-md-0 me-md-4`}
                             style={{ borderRadius: "2px" }}
                           >
                             {btn.label}
@@ -249,14 +249,14 @@ const CarouselFadeExample = () => {
       <Container className='container p-4  bg-customgreen'>
         <Row className="g-2">
           <Col md={10}>
-            <Row className="g-2">
+            <Row className="g-2  ">
               <Col md={4}>
                 <Form.Control
                   type="text"
                   placeholder="Keyword"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                  className="border-0"
+                  className="border-0 "
                 />
               </Col>
               <Col md={4}>
@@ -322,7 +322,7 @@ const JobCategories = () => {
   const categories = jobData.jobcategories;
 
   return (
-    <Container fluid className=" container-xxl py-5  ">
+    <Container fluid className=" container-xxl py-5 pt-5 pb-4 ">
       <Container>
         <h1 className="text-center mb-5 font-inter font-40xl font-bold text-dark">Explore By Category</h1>
         <Row className="g-4">
@@ -406,7 +406,7 @@ const JobsListing = () => {
             <JobItem key={index} {...job} />
           ))}
              <div className="text-center mt-5">
-          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href="/featured-jobs">
+          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "4 !importatnt" }} href="/featured-jobs">
             Browse More Jobs
           </Button>
           </div>
@@ -416,7 +416,7 @@ const JobsListing = () => {
             <JobItem key={index} {...job} />
           ))}
           <div className="text-center mt-5">
-          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href="/featured-jobs">
+          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "4 !importatnt" }} href="/featured-jobs">
             Browse More Jobs
           </Button>
           </div>
@@ -426,7 +426,7 @@ const JobsListing = () => {
             <JobItem key={index} {...job} />
           ))}
           <div className="text-center mt-5">
-          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "0 !importatnt" }} href="/featured-jobs">
+          <Button className="!bg-customgreen text-white py-3 px-5 mt-3 !font-inter !font-15xl !font-bold" style={{  border: "none", borderRadious: "4 !importatnt" }} href="/featured-jobs">
             Browse More Jobs
           </Button>
           </div>
@@ -437,7 +437,7 @@ const JobsListing = () => {
 }
 
 const JobItem = ({ title, company, location, type, salary, deadline, img }) => (
-  <Row className="g-4 job-item p-4 mb-4">
+  <Row className="g-4 job-item p-3 mb-4 border shadow-sm m-2">
     <Col sm={12} md={8} className="d-flex align-items-center">
       <Image
         src={img}

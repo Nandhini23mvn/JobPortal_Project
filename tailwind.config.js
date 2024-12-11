@@ -7,7 +7,7 @@ module.exports = {
         customgreen: '#00b074',
         dark: '#2B3940',
         lightgrey: '#666565',
-        lightblue: '#EFFDF5' // Removed the extra semicolon
+        lightblue: '#EFFDF5', // Removed the extra semicolon
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
@@ -19,7 +19,7 @@ module.exports = {
         '16xl': '16px',
       },
       fontWeight: {
-        bold: 700,
+        bold: 800,
         normal: 500,
         normal_1: 600,
       },

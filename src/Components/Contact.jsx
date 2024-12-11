@@ -248,17 +248,25 @@ const ContactSection = () => {
       const result = await response.json();
       console.log("Request submitted successfully:", result);
       alert("Your request has been submitted successfully!");
+
+      // Clear the form data after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
       console.error("Error submitting request:", error);
       alert(`Error submitting your request: ${error.message}`);
     }
-  };
+  }; 
 
   return (
     <Container fluid className="py-5 container-xxl">
       <Container>
-        <h1 className="text-center mb-5">{title}</h1>
-        <Row className="g-4">
+      <div className="text-center mb-5 font-inter text-[40px] font-bold">{title}</div>
+      <Row className="g-4">
           <Col xs={12}>
             <Row className="gy-4">
               <Col md={4}>
@@ -318,7 +326,7 @@ const ContactSection = () => {
               <a href="https://htmlcodex.com/contact-form" className="text-customgreen">
                 Download Now
               </a>
-              .
+              
             </p>
             <Form onSubmit={handleSubmit}>
               <Row className="g-3">

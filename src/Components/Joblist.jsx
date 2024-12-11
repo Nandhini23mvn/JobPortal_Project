@@ -245,7 +245,7 @@ const JobsListing = () => {
 }
 
 const JobItem = ({ title, company, location, type, salary, deadline, img }) => (
-  <Row className="g-4 job-item p-4 mb-4">
+  <Row className="g-4 job-item p-4 mb-4 border shadow-sm m-2">
     <Col sm={12} md={8} className="d-flex align-items-center">
       <Image
         src={img}

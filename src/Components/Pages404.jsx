@@ -176,7 +176,7 @@ const About = ({ jobData = {} }) => {
 
   return (
     <Container
-      className="py-5 container-xxl page-header pb-4 position-relative "
+      className="py-5 container-xxl page-header pb-5 position-relative "
       style={{
         backgroundImage: `linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)), url(${carouselImage})`,
         backgroundSize: 'cover',
@@ -208,19 +208,19 @@ const About = ({ jobData = {} }) => {
 
 const NotFoundPage = () => {
     return (
-        <Container className="container-xxl pt-5 text-center">
+        <Container className="container-xxl pt-5 pb-4 text-center">
         <Row className="justify-content-center pb-5 mb-5">
           <Col lg={6}>
           <div className="d-flex justify-content-center p-3">
             <BsExclamationTriangle className="display-1 text-customgreen" />
           </div>
-            <h1 className="display-1 bold">404</h1>
-            <h1 className="mb-4">Page Not Found</h1>
-            <p className="mb-4">
+            <h1 className="display-1 !font-inter !font-bold">404</h1>
+            <h1 className="mb-4 !font-inter !font-bold">Page Not Found</h1>
+            <p className="mb-4 !font-hebbo pb-2">
               We’re sorry, the page you have looked for does not exist on our website!
               Maybe go to our home page or try to use a search?
             </p>
-            <Button className="py-3 px-5 text-white" href="/" style={{ backgroundColor: '#00b074', border: 'none' }}>
+            <Button className="py-3 px-5 text-white !font-inter !font-normal_1" href="/" style={{ backgroundColor: '#00b074', border: 'none' }}>
               Go Back To Home
             </Button>
           </Col>

@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "animate.css": "^4.1.1",
     "assert": "^2.1.0",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
@@ -44,6 +45,7 @@
     "url": "^0.11.4",
     "util": "^0.12.5",
     "web-vitals": "^2.1.4",
+    "wow.js": "^1.2.2",
     "xlsx": "^0.18.5"
   },
   "scripts": {
