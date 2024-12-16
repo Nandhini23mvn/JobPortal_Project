@@ -15,5 +15,15 @@ router.post('/submit', async (req, res) => {
     res.status(500).json({ message: 'Error saving data', error });
   }
 });
+// GET endpoint to fetch all messages
+router.get('/', async (req, res) => {
+  try {
+    const messages = await Message.find(); // Fetch all messages from the database
+    res.status(200).json(messages);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching messages', error });
+  }
+});
+
 
 module.exports = router;

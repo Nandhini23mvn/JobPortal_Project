@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from "react";
 import { Button, Col, Container,  Table, Modal,Row,Card } from "react-bootstrap";
-import { Navbar, Nav, Image, Form } from 'react-bootstrap';
+import { Navbar, Nav, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faUser, faUserPlus, faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { faTachometerAlt,faAngleDown } from '@fortawesome/free-solid-svg-icons'; // Ensure this import is present
@@ -64,7 +64,9 @@ const AdminPanel = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [showModal, setShowModal] = useState(false); // For viewing user details
   const [viewUser, setViewUser] = useState(null); // To hold user details for viewing
-  
+  const [loading, setLoading] = useState(true); // Track loading state
+  const [messages, setMessages] = useState([]); // Initialize as an empty array
+
  
 
 
@@ -296,41 +298,28 @@ const AdminPanel = () => {
     setViewedMessage(null);
   };
 
- // Fetch form data when the component mounts
- useEffect(() => {
-  const fetchMessages = async () => {
-    try {
-      const response = await fetch('http://localhost:5500/api/messages');
-      if (!response.ok) {
-        throw new Error('Failed to fetch messages');
+  
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const response = await fetch('http://localhost:5500/api/message');
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch messages');
+        }
+        const data = await response.json();
+        setMessages(data); // Store the fetched messages in state
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+        setError('Unable to load messages. Please try again later.');
+      } finally {
+        setLoading(false); // Ensure loading ends
       }
-      const data = await response.json();
-      setMessages(data); // Store the fetched messages in state
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    }
-  };
+    };
 
-  fetchMessages();
-}, []);
-const [messages, setMessages] = useState([
-  { name: 'John Doe', email: 'john@example.com', subject: 'Inquiry', message: 'Hello, I need more information about your services.' },
-  { name: 'Jane Smith', email: 'jane@example.com', subject: 'Support', message: 'I have an issue with my account.' },
-]);
-const [newMessage, setNewMessage] = useState({
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
-});
-
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  setNewMessage((prevMessage) => ({
-    ...prevMessage,
-    [name]: value,
-  }));
-};
+    fetchMessages();
+  }, []);
+  if (loading) return <div>Loading messages...</div>;
 
 
   return (
@@ -714,60 +703,9 @@ const handleInputChange = (e) => {
 {activeButton === "manageMessage" && (
   <>
     <div>
-      <h2>Admin Panel</h2>
-      <h3>Form Submissions</h3>
+      <h3>View Messages</h3>
 
-      {/* Message Form */}
-      <Form onSubmit={handleSubmit} className="mb-4">
-        <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your name"
-            name="name"
-            value={newMessage.name}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter your email"
-            name="email"
-            value={newMessage.email}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formSubject">
-          <Form.Label>Subject</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter subject"
-            name="subject"
-            value={newMessage.subject}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formMessage">
-          <Form.Label>Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Enter your message"
-            name="message"
-            value={newMessage.message}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit Message
-        </Button>
-      </Form>
+    
 
       {/* Messages Table */}
       <Table striped bordered hover>
