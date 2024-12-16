@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/submit', async (req, res) => {
   try {
     const newMessage = new Message(req.body);
+    // console.log('Request body:', req.body);
     await newMessage.save();
     res.status(201).json({ message: 'Data saved successfully!' });
   } catch (error) {
